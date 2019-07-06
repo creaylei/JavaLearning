@@ -206,3 +206,120 @@ ResultMap中的映射关系
 ```
 
 至此，我们的Mybatis基础版就可以搭建完成了
+
+
+
+## 2.升级-分页和遍历集合
+
+### 1. 分页查询的构建
+
+> 网页上常见的分页有两种
+>
+> - 百度的那种，下面是页数pageNum，然后每页显示pageSize个数据的
+> - 信息流方式，先显示pageSize个，然后往下滚动继续给信息的，也是分页
+
+1. 引入依赖
+
+```java
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper</artifactId>
+    <version>4.1.6</version>
+</dependency>
+```
+
+2. 两种使用方式
+
+- 第一种，直接通过RowBounds参数完成分页
+
+```java
+List<Student> list = studentMapper.find(new RowBounds(0, 10));
+Page page = ((Page) list;
+```
+
+- 第二种，PageHelper.startPage()静态方法
+
+```
+ //获取第1页，10条内容，默认查询总数count
+    PageHelper.startPage(1, 10);
+//紧跟着的第一个select方法会被分页
+    List<Country> list = studentMapper.find();
+    Page page = ((Page) list;
+```
+
+注: 返回结果list，已经是Page对象，Page对象是一个arrayList
+
+原理: 使用ThreadLocal来传递和保存Page对象，每次查询，都需要单独设置PageHelper.startPage()方法。
+
+3. 自己使用
+
+> 自己使用的时候，要自己定义分页查询的QueryDTO，该DTO中有， pageSize和pageNum字段
+
+```java
+PageInfo<OperationLogDto> pageInfo = operationLogService.queryOperationLogByPage(operationLogQueryDto);
+
+        PageDto<OperationLogDto> pageDto = new PageDto<>();
+        pageDto.setList(pageInfo.getList());
+        pageDto.setTotal(pageInfo.getTotal());
+        pageDto.setPageSize(operationLogQueryDto.getPageSize());
+        pageDto.setPageNum(operationLogQueryDto.getPageNum());
+
+
+其中queryOperationLogByPage方法为
+
+Page<OperationLogDto> page = PageHelper.startPage(operationLogQueryDto.getPageNum(), operationLogQueryDto.getPageSize());
+        List<OperationLogPo> operationLogPoList = operationLogDao.queryOperationLogByPage(operationLogQueryDto);
+        PageInfo<OperationLogDto> pageInfo = new PageInfo<OperationLogDto>(page.getResult());
+
+```
+
+```xml
+Mapper.xml文件中的
+<select id="queryOperationLogByPage" resultType="com.shuidihuzhu.cs.robot.po.OperationLogPo">
+        SELECT <include refid="Base_Column_List"/> FROM cs_robot_operation_log
+        <where>
+            <if test="operationLogQueryDto.operateType !=null and operationLogQueryDto.operateType !=''">and operate_type=#{operationLogQueryDto.operateType}</if>
+            <if test="operationLogQueryDto.title !=null and operationLogQueryDto.title !=''">and title = #{operationLogQueryDto.title}</if>
+            <if test="operationLogQueryDto.requestUri !=null and operationLogQueryDto.requestUri !='' ">and request_uri = #{operationLogQueryDto.requestUri}</if>
+            <if test="operationLogQueryDto.params !=null and operationLogQueryDto.params !=''">and params = #{operationLogQueryDto.params}</if>
+            <if test="operationLogQueryDto.exceptionInfo !=null and operationLogQueryDto.exceptionInfo!=''">and exception_info = #{operationLogQueryDto.exceptionInfo}</if>
+            <if test="operationLogQueryDto.detail !=null and operationLogQueryDto.detail !=''">and detail = #{operationLogQueryDto.detail}</if>
+            <if test="operationLogQueryDto.creator !=null and operationLogQueryDto.creator !=''">and creator = #{operationLogQueryDto.creator}</if>
+            <if test="operationLogQueryDto.modifier !=null and operationLogQueryDto.modifier !=''">and modifier= #{operationLogQueryDto.modifier}</if>
+            <if test="operationLogQueryDto.createTime !=null and operationLogQueryDto.createTime!=''">and create_time = #{operationLogQueryDto.createTime}</if>
+            <if test="operationLogQueryDto.updateTime !=null and operationLogQueryDto.updateTime!=''">and update_time = #{operationLogQueryDto.updateTime}</if>
+        </where>
+        AND is_delete = 0 ORDER BY update_time DESC
+    </select>
+```
+
+### 2. foreach遍历
+
+```xml
+<select id="selectPostIn" resultType="domain.blog.Post">
+  SELECT *
+  FROM POST P
+  WHERE ID in
+  <foreach item="item" index="index" collection="list"
+      open="(" separator="," close=")">
+        #{item}
+  </foreach>
+</select>
+```
+
+*foreach* 元素的功能非常强大，它允许你指定一个集合，声明可以在元素体内使用的集合项（item）和索引（index）变量。它也允许你指定开头与结尾的字符串以及在迭代结果之间放置分隔符。这个元素是很智能的，因此它不会偶然地附加多余的分隔符。
+
+自己写的
+
+```xml
+<select id="queryRobotKnowledgeByIdList" resultType="com.shuidihuzhu.cs.robot.po.RobotKnowledgePo">
+        SELECT <include refid="Base_Column_List"/> FROM cs_robot_knowledge
+        WHERE id IN 
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        AND is_delete = 0
+    </select>
+```
+
+[Mybatis动态Sql](http://www.mybatis.org/mybatis-3/zh/dynamic-sql.html)

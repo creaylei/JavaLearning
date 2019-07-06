@@ -56,5 +56,45 @@ UTF-8可以节省空间，在UTF-8中，字符“C”只需要8位，一些不�
 
 `explain select * from User where user_name = 'zhangsan'`
 
+对explain搜索的结果分析
 
+![image-20190705191207426](/Users/zhangleishuidihuzhu.com/Pictures/wiznote/image-20190705191207426.png)
 
+- type : 连接类型(the join type), 描述找到所需数据的扫描方式
+
+  常见的扫描方式由快到慢: system> const > eq_ref > ref > range > index > ALL
+
+  | system | 系统表，少量数据，不需要进行磁盘IO  |
+  | ------ | ----------------------------------- |
+  | const  | 常量链接                            |
+  | eq_ref | 主键索引 或者 非空唯一索引 等值扫描 |
+  | ref    | 非主键唯一索引等值扫描              |
+  | range  | 范围扫描                            |
+  | index  | 索引树扫描                          |
+  | ALL    | 全表扫描                            |
+
+#### 1. system
+
+- *explain select \* from mysql.time_zone;*   从系统库mysql的系统表time_zone里查询，扫描类型为system, 这些数据已经到内存里，不需要进行磁盘IO, 快
+- *explain select \* from (select \* from user where id=1) tmp;*     内层嵌套const返回一个临时表， 这个表在内存中， 外层在这个临时表中查找， 扫描类型也是system，不需IO
+
+#### 2. const
+
+- explain select * from user where id = 1  ;  
+
+  扫描条件为： 1. 命中主键(PK)或者唯一索引(Unique)  2. 被连接部分是一个常量值， 这类扫描效率极高，返回数据量少，速度非常快
+
+#### 3. eq_ref
+
+- explain select * from user, user_ex where user.id = user_ex.id 
+
+  扫描条件为： 对于前表的每一行， 后表只有一行对应
+
+  即： 1. join查询， 2.命中主键或者非空唯一索引  3. 等值连接 
+
+  这里 id为主键，join查询为eq_ref， 也非常快
+
+#### 4. ref
+
+- 上例eq_ref案例中的主键索引，改为普通非唯一(non unique)索引；对于前表的每一行(row)，后表可能有多于一行的数据被扫描
+- *explain select \* from user,user_ex where user.id=user_ex.id;*
