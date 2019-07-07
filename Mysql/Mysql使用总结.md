@@ -98,3 +98,50 @@ UTF-8可以节省空间，在UTF-8中，字符“C”只需要8位，一些不�
 
 - 上例eq_ref案例中的主键索引，改为普通非唯一(non unique)索引；对于前表的每一行(row)，后表可能有多于一行的数据被扫描
 - *explain select \* from user,user_ex where user.id=user_ex.id;*
+- ref扫描，可能出现在join里，也可能出现在单表普通索引里，每一次匹配可能有多行数据返回，虽然它比eq_ref要慢，但它仍然是一个很快的join类型。
+
+#### 5. range
+
+- range扫描比较好理解，他是索引上的范围查询，他会在索引上扫描特定范围的值
+- 像上例中的**between**，**in**，**>**都是典型的范围(range)查询
+- 画外音：必须是索引，否则不能批量跳过
+
+#### 6. index
+
+- index类型， 需要扫描**索引上的全部数据**
+- 它仅比全表扫描快一点
+
+#### 7. ALL
+
+- *explain select \* from user,user_ex where user.id=user_ex.id;*
+- 如果id上不建索引，对于前表的每一行(row)，后表都要被权标扫描
+
+注：今天的分析中，这个相同的join语句出现了三次
+
+1. id为主键的时候，扫描类型为eq_ref
+2. id为非唯一索引，扫描类型为ref
+3. id没有索引的时候，扫描类型为ALL
+
+#### 8. 总结
+
+（1）explain结果中的**type字段**，<u>表示（广义）连接类型</u>，它描述了找到所需数据使用的扫描方式；
+
+（2）常见的扫描类型有：
+
+system>const>eq_ref>ref>range>index>ALL
+
+其扫描速度由快到慢；
+
+（3）各类扫描类型的要点是：
+
+- **system**最快：不进行磁盘IO
+- **const**：PK或者unique上的等值查询
+- **eq_ref**：PK或者unique上的join查询，等值匹配，对于前表的每一行(row)，后表只有一行命中
+- **ref**：非唯一索引，等值匹配，可能有多行命中
+- **range**：索引上的范围扫描，例如：between/in/>
+- **index**：索引上的全集扫描，例如：InnoDB的count
+- **ALL**最慢：全表扫描(full table scan)
+
+（4）建立正确的索引(index)，非常重要；
+
+（5）使用explain了解并优化执行计划，非常重要；
