@@ -146,5 +146,5 @@ public static class VO {
 }
 ```
 
-[更多配置方式]([file:///private/var/folders/_m/b_q50wf16bs99xcklnhx6spm0000gn/T/WizNote/0c5cc56b-9426-47b7-aeb6-e110dc11e993/index.html](file:///private/var/folders/_m/b_q50wf16bs99xcklnhx6spm0000gn/T/WizNote/0c5cc56b-9426-47b7-aeb6-e110dc11e993/index.html))
+更多配置方式： file:///private/var/folders/_m/b_q50wf16bs99xcklnhx6spm0000gn/T/WizNote/0c5cc56b-9426-47b7-aeb6-e110dc11e993/index.html
 
