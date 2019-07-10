@@ -323,3 +323,11 @@ Mapper.xml文件中的
 ```
 
 [Mybatis动态Sql](http://www.mybatis.org/mybatis-3/zh/dynamic-sql.html)
+
+## 采坑篇
+
+#### 1.分页查询没效果
+
+1. 当Dao层要使用QueryDTO这种搜索对象时候（二者选其一就可）
+   - 要么是在dao层的参数里面使用   queryByPage(**@Param** QueryDTO queryDTO), 需要@Param修饰
+   - 要么在xml里面的 selectByPage里面采用    paramType = "com.*.QueryDTO" 明确标识出来，否则不能生效
