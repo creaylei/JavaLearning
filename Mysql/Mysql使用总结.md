@@ -145,3 +145,9 @@ system>const>eq_ref>ref>range>index>ALL
 （4）建立正确的索引(index)，非常重要；
 
 （5）使用explain了解并优化执行计划，非常重要；
+
+## 4. 错误用法
+
+1. limit
+
+   limit的

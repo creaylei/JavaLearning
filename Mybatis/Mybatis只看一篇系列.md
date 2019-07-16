@@ -331,3 +331,27 @@ Mapper.xml文件中的
 1. 当Dao层要使用QueryDTO这种搜索对象时候（二者选其一就可）
    - 要么是在dao层的参数里面使用   queryByPage(**@Param** QueryDTO queryDTO), 需要@Param修饰
    - 要么在xml里面的 selectByPage里面采用    paramType = "com.*.QueryDTO" 明确标识出来，否则不能生效
+   
+2. Mybatis中的大于小于号
+
+   - 第一种写法：
+
+     ```xml
+     原符号 < <= > >= & ' "
+     替换符号 &lt; &lt;= &gt; &gt;= &amp; &apos; &quot;
+     例如：sql如下：
+     create_date_time &gt;= #{startTime} and create_date_time &lt;= #{endTime}
+     ```
+
+   - 第二种写法：
+
+     ```xml
+     大于等于
+     <![CDATA[ >= ]]>
+     小于等于
+     <![CDATA[ <= ]]>
+     例如：sql如下：
+     create_date_time <![CDATA[ >= ]]> #{startTime} and create_date_time <![CDATA[ <= ]]> #{endTime}
+     ```
+
+     
