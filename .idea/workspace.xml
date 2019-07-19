@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="" />
+    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mybatis/Mybatis只看一篇系列.md" afterPath="$PROJECT_DIR$/Mybatis/Mybatis只看一篇系列.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mysql/Mysql使用总结.md" afterPath="$PROJECT_DIR$/Mysql/Mysql使用总结.md" />
+    </list>
     <ignored path="JavaLearning.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,7 +45,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor vertical-scroll-proportion="0.0">
-                <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+                <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -120,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor vertical-scroll-proportion="0.8876405">
+              <first_editor vertical-scroll-proportion="0.0">
                 <caret line="264" column="17" selection-start-line="264" selection-start-column="17" selection-end-line="264" selection-end-column="17" />
                 <folding>
                   <marker date="1560500999089" expanded="true" signature="3128:3191" placeholder="{...}" />
@@ -137,9 +141,32 @@
         <entry file="file://$PROJECT_DIR$/Mysql/Mysql使用总结.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor vertical-scroll-proportion="0.68218297">
-                <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+              <first_editor vertical-scroll-proportion="-0.31809145">
+                <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
                 <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mybatis只看一篇系列.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Mybatis/Mybatis只看一篇系列.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor vertical-scroll-proportion="2.2166998">
+                <caret line="352" column="14" selection-start-line="352" selection-start-column="14" selection-end-line="352" selection-end-column="14" />
+                <folding>
+                  <marker date="1563366812363" expanded="true" signature="706:833" placeholder="{...}" />
+                  <marker date="1563366812363" expanded="true" signature="889:974" placeholder="{...}" />
+                  <marker date="1563366812363" expanded="true" signature="1185:1237" placeholder="..." />
+                  <marker date="1563366812363" expanded="true" signature="1466:1666" placeholder="..." />
+                  <marker date="1563366812363" expanded="true" signature="1778:1872" placeholder="..." />
+                  <marker date="1563366812363" expanded="true" signature="6612:8334" placeholder="..." />
+                  <marker date="1563366812363" expanded="true" signature="6707:8268" placeholder="..." />
+                  <marker date="1563366812363" expanded="true" signature="8421:8594" placeholder="..." />
+                  <marker date="1563366812363" expanded="true" signature="8516:8584" placeholder="..." />
+                </folding>
               </first_editor>
               <second_editor />
             </state>
@@ -164,6 +191,7 @@
         <option value="$PROJECT_DIR$/Spring/SpringBoot/SpringBoot.md" />
         <option value="$PROJECT_DIR$/Spring/SpringMVC/注解.md" />
         <option value="$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md" />
+        <option value="$PROJECT_DIR$/Mysql/Mysql使用总结.md" />
       </list>
     </option>
   </component>
@@ -176,10 +204,8 @@
     <option name="jreName" value="1.8" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1440" />
-    <option name="y" value="-180" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -206,7 +232,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,8 +281,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -697,6 +723,8 @@
       <workItem from="1560500737454" duration="2220000" />
       <workItem from="1562309037987" duration="349000" />
       <workItem from="1562309392186" duration="516000" />
+      <workItem from="1563256056819" duration="83000" />
+      <workItem from="1563544551393" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="更新文件">
       <created>1560501417463</created>
@@ -704,14 +732,20 @@
       <option name="project" value="LOCAL" />
       <updated>1560501417463</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="更新文件">
+      <created>1563256102966</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1563256102966</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3085000" />
+    <option name="totallyTimeSpent" value="3200000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="-180" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -719,7 +753,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32851985" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -764,7 +798,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor vertical-scroll-proportion="0.0">
-            <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
@@ -836,196 +870,6 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor vertical-scroll-proportion="0.0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding>
-              <marker date="1560500999089" expanded="true" signature="3128:3191" placeholder="{...}" />
-              <marker date="1560500999089" expanded="true" signature="3286:3382" placeholder="@{...}" />
-              <marker date="1560500999089" expanded="true" signature="3405:3462" placeholder="{...}" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaLearning.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
-            <folding>
-              <marker date="1560500896887" expanded="true" signature="1991:2788" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2021:2124" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2143:2304" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2317:2660" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2482:2606" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2681:2776" placeholder="..." />
-              <marker date="1560500896887" expanded="false" signature="2964:2971" placeholder=" { " />
-              <marker date="1560500896887" expanded="false" signature="3012:3016" placeholder=" }" />
-              <marker date="1560500896887" expanded="false" signature="3078:3085" placeholder=" { " />
-              <marker date="1560500896887" expanded="false" signature="3126:3130" placeholder=" }" />
-              <marker date="1560500896887" expanded="false" signature="3183:3190" placeholder=" { " />
-              <marker date="1560500896887" expanded="false" signature="3222:3226" placeholder=" }" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/注解.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-            <folding>
-              <marker date="1560501122386" expanded="true" signature="659:731" placeholder="/**...*/" />
-              <marker date="1560501122386" expanded="true" signature="1303:1360" placeholder="/**...*/" />
-              <marker date="1560501122386" expanded="true" signature="1393:1455" placeholder="@{...}" />
-              <marker date="1560501122386" expanded="true" signature="1622:1640" placeholder="/**...*/" />
-              <marker date="1560501122386" expanded="true" signature="1641:1738" placeholder="@{...}" />
-              <marker date="1560501122386" expanded="true" signature="1821:1878" placeholder="/**...*/" />
-              <marker date="1560501122386" expanded="true" signature="2198:3538" placeholder="{...}" />
-              <marker date="1560501122386" expanded="true" signature="3725:3732" placeholder="{...}" />
-              <marker date="1560501122386" expanded="true" signature="3916:3923" placeholder="{...}" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-            <folding>
-              <marker date="1560501187183" expanded="false" signature="1040:1155" placeholder="..." />
-              <marker date="1560501187183" expanded="false" signature="1320:1322" placeholder=" { " />
-              <marker date="1560501187183" expanded="false" signature="1376:1378" placeholder=" }" />
-              <marker date="1560501187183" expanded="false" signature="2856:3034" placeholder="/.../" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding>
-              <marker date="1560500999089" expanded="true" signature="3128:3191" placeholder="{...}" />
-              <marker date="1560500999089" expanded="true" signature="3286:3382" placeholder="@{...}" />
-              <marker date="1560500999089" expanded="true" signature="3405:3462" placeholder="{...}" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaLearning.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
-            <folding>
-              <marker date="1560500896887" expanded="true" signature="1991:2788" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2021:2124" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2143:2304" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2317:2660" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2482:2606" placeholder="..." />
-              <marker date="1560500896887" expanded="true" signature="2681:2776" placeholder="..." />
-              <marker date="1560500896887" expanded="false" signature="2964:2971" placeholder=" { " />
-              <marker date="1560500896887" expanded="false" signature="3012:3016" placeholder=" }" />
-              <marker date="1560500896887" expanded="false" signature="3078:3085" placeholder=" { " />
-              <marker date="1560500896887" expanded="false" signature="3126:3130" placeholder=" }" />
-              <marker date="1560500896887" expanded="false" signature="3183:3190" placeholder=" { " />
-              <marker date="1560500896887" expanded="false" signature="3222:3226" placeholder=" }" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/注解.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-            <folding>
-              <marker date="1560501122386" expanded="true" signature="659:731" placeholder="/**...*/" />
-              <marker date="1560501122386" expanded="true" signature="1303:1360" placeholder="/**...*/" />
-              <marker date="1560501122386" expanded="true" signature="1393:1455" placeholder="@{...}" />
-              <marker date="1560501122386" expanded="true" signature="1622:1640" placeholder="/**...*/" />
-              <marker date="1560501122386" expanded="true" signature="1641:1738" placeholder="@{...}" />
-              <marker date="1560501122386" expanded="true" signature="1821:1878" placeholder="/**...*/" />
-              <marker date="1560501122386" expanded="true" signature="2198:3538" placeholder="{...}" />
-              <marker date="1560501122386" expanded="true" signature="3725:3732" placeholder="{...}" />
-              <marker date="1560501122386" expanded="true" signature="3916:3923" placeholder="{...}" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.0">
-            <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-            <folding>
-              <marker date="1560501187183" expanded="false" signature="1040:1155" placeholder="..." />
-              <marker date="1560501187183" expanded="false" signature="1320:1322" placeholder=" { " />
-              <marker date="1560501187183" expanded="false" signature="1376:1378" placeholder=" }" />
-              <marker date="1560501187183" expanded="false" signature="2856:3034" placeholder="/.../" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.8876405">
             <caret line="264" column="17" selection-start-line="264" selection-start-column="17" selection-end-line="264" selection-end-column="17" />
             <folding>
               <marker date="1560500999089" expanded="true" signature="3128:3191" placeholder="{...}" />
@@ -1040,8 +884,452 @@
     <entry file="file://$PROJECT_DIR$/Mysql/Mysql使用总结.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.68218297">
-            <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mybatis/Mybatis只看一篇系列.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1563366812363" expanded="true" signature="706:833" placeholder="{...}" />
+              <marker date="1563366812363" expanded="true" signature="889:974" placeholder="{...}" />
+              <marker date="1563366812363" expanded="true" signature="1185:1237" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="1466:1666" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="1778:1872" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="6612:8334" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="6707:8268" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="8421:8594" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="8516:8584" placeholder="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaLearning.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
+            <folding>
+              <marker date="1560500896887" expanded="true" signature="1991:2788" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2021:2124" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2143:2304" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2317:2660" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2482:2606" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2681:2776" placeholder="..." />
+              <marker date="1560500896887" expanded="false" signature="2964:2971" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3012:3016" placeholder=" }" />
+              <marker date="1560500896887" expanded="false" signature="3078:3085" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3126:3130" placeholder=" }" />
+              <marker date="1560500896887" expanded="false" signature="3183:3190" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3222:3226" placeholder=" }" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/注解.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <folding>
+              <marker date="1560501122386" expanded="true" signature="659:731" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1303:1360" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1393:1455" placeholder="@{...}" />
+              <marker date="1560501122386" expanded="true" signature="1622:1640" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1641:1738" placeholder="@{...}" />
+              <marker date="1560501122386" expanded="true" signature="1821:1878" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="2198:3538" placeholder="{...}" />
+              <marker date="1560501122386" expanded="true" signature="3725:3732" placeholder="{...}" />
+              <marker date="1560501122386" expanded="true" signature="3916:3923" placeholder="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <folding>
+              <marker date="1560501187183" expanded="false" signature="1040:1155" placeholder="..." />
+              <marker date="1560501187183" expanded="false" signature="1320:1322" placeholder=" { " />
+              <marker date="1560501187183" expanded="false" signature="1376:1378" placeholder=" }" />
+              <marker date="1560501187183" expanded="false" signature="2856:3034" placeholder="/.../" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="264" column="17" selection-start-line="264" selection-start-column="17" selection-end-line="264" selection-end-column="17" />
+            <folding>
+              <marker date="1560500999089" expanded="true" signature="3128:3191" placeholder="{...}" />
+              <marker date="1560500999089" expanded="true" signature="3286:3382" placeholder="@{...}" />
+              <marker date="1560500999089" expanded="true" signature="3405:3462" placeholder="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mysql/Mysql使用总结.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaLearning.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
+            <folding>
+              <marker date="1560500896887" expanded="true" signature="1991:2788" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2021:2124" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2143:2304" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2317:2660" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2482:2606" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2681:2776" placeholder="..." />
+              <marker date="1560500896887" expanded="false" signature="2964:2971" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3012:3016" placeholder=" }" />
+              <marker date="1560500896887" expanded="false" signature="3078:3085" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3126:3130" placeholder=" }" />
+              <marker date="1560500896887" expanded="false" signature="3183:3190" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3222:3226" placeholder=" }" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/注解.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <folding>
+              <marker date="1560501122386" expanded="true" signature="659:731" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1303:1360" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1393:1455" placeholder="@{...}" />
+              <marker date="1560501122386" expanded="true" signature="1622:1640" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1641:1738" placeholder="@{...}" />
+              <marker date="1560501122386" expanded="true" signature="1821:1878" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="2198:3538" placeholder="{...}" />
+              <marker date="1560501122386" expanded="true" signature="3725:3732" placeholder="{...}" />
+              <marker date="1560501122386" expanded="true" signature="3916:3923" placeholder="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <folding>
+              <marker date="1560501187183" expanded="false" signature="1040:1155" placeholder="..." />
+              <marker date="1560501187183" expanded="false" signature="1320:1322" placeholder=" { " />
+              <marker date="1560501187183" expanded="false" signature="1376:1378" placeholder=" }" />
+              <marker date="1560501187183" expanded="false" signature="2856:3034" placeholder="/.../" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1560500999089" expanded="true" signature="3128:3191" placeholder="{...}" />
+              <marker date="1560500999089" expanded="true" signature="3286:3382" placeholder="@{...}" />
+              <marker date="1560500999089" expanded="true" signature="3405:3462" placeholder="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaLearning.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
+            <folding>
+              <marker date="1560500896887" expanded="true" signature="1991:2788" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2021:2124" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2143:2304" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2317:2660" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2482:2606" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2681:2776" placeholder="..." />
+              <marker date="1560500896887" expanded="false" signature="2964:2971" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3012:3016" placeholder=" }" />
+              <marker date="1560500896887" expanded="false" signature="3078:3085" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3126:3130" placeholder=" }" />
+              <marker date="1560500896887" expanded="false" signature="3183:3190" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3222:3226" placeholder=" }" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/注解.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <folding>
+              <marker date="1560501122386" expanded="true" signature="659:731" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1303:1360" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1393:1455" placeholder="@{...}" />
+              <marker date="1560501122386" expanded="true" signature="1622:1640" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1641:1738" placeholder="@{...}" />
+              <marker date="1560501122386" expanded="true" signature="1821:1878" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="2198:3538" placeholder="{...}" />
+              <marker date="1560501122386" expanded="true" signature="3725:3732" placeholder="{...}" />
+              <marker date="1560501122386" expanded="true" signature="3916:3923" placeholder="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <folding>
+              <marker date="1560501187183" expanded="false" signature="1040:1155" placeholder="..." />
+              <marker date="1560501187183" expanded="false" signature="1320:1322" placeholder=" { " />
+              <marker date="1560501187183" expanded="false" signature="1376:1378" placeholder=" }" />
+              <marker date="1560501187183" expanded="false" signature="2856:3034" placeholder="/.../" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1560500999089" expanded="true" signature="3128:3191" placeholder="{...}" />
+              <marker date="1560500999089" expanded="true" signature="3286:3382" placeholder="@{...}" />
+              <marker date="1560500999089" expanded="true" signature="3405:3462" placeholder="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaLearning.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
+            <folding>
+              <marker date="1560500896887" expanded="true" signature="1991:2788" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2021:2124" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2143:2304" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2317:2660" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2482:2606" placeholder="..." />
+              <marker date="1560500896887" expanded="true" signature="2681:2776" placeholder="..." />
+              <marker date="1560500896887" expanded="false" signature="2964:2971" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3012:3016" placeholder=" }" />
+              <marker date="1560500896887" expanded="false" signature="3078:3085" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3126:3130" placeholder=" }" />
+              <marker date="1560500896887" expanded="false" signature="3183:3190" placeholder=" { " />
+              <marker date="1560500896887" expanded="false" signature="3222:3226" placeholder=" }" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringMVC/注解.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <folding>
+              <marker date="1560501122386" expanded="true" signature="659:731" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1303:1360" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1393:1455" placeholder="@{...}" />
+              <marker date="1560501122386" expanded="true" signature="1622:1640" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="1641:1738" placeholder="@{...}" />
+              <marker date="1560501122386" expanded="true" signature="1821:1878" placeholder="/**...*/" />
+              <marker date="1560501122386" expanded="true" signature="2198:3538" placeholder="{...}" />
+              <marker date="1560501122386" expanded="true" signature="3725:3732" placeholder="{...}" />
+              <marker date="1560501122386" expanded="true" signature="3916:3923" placeholder="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <folding>
+              <marker date="1560501187183" expanded="false" signature="1040:1155" placeholder="..." />
+              <marker date="1560501187183" expanded="false" signature="1320:1322" placeholder=" { " />
+              <marker date="1560501187183" expanded="false" signature="1376:1378" placeholder=" }" />
+              <marker date="1560501187183" expanded="false" signature="2856:3034" placeholder="/.../" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spring/SpringBoot/SpringBoot.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="0.0">
+            <caret line="264" column="17" selection-start-line="264" selection-start-column="17" selection-end-line="264" selection-end-column="17" />
+            <folding>
+              <marker date="1560500999089" expanded="true" signature="3128:3191" placeholder="{...}" />
+              <marker date="1560500999089" expanded="true" signature="3286:3382" placeholder="@{...}" />
+              <marker date="1560500999089" expanded="true" signature="3405:3462" placeholder="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mybatis/Mybatis只看一篇系列.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="2.2166998">
+            <caret line="352" column="14" selection-start-line="352" selection-start-column="14" selection-end-line="352" selection-end-column="14" />
+            <folding>
+              <marker date="1563366812363" expanded="true" signature="706:833" placeholder="{...}" />
+              <marker date="1563366812363" expanded="true" signature="889:974" placeholder="{...}" />
+              <marker date="1563366812363" expanded="true" signature="1185:1237" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="1466:1666" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="1778:1872" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="6612:8334" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="6707:8268" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="8421:8594" placeholder="..." />
+              <marker date="1563366812363" expanded="true" signature="8516:8584" placeholder="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mysql/Mysql使用总结.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor vertical-scroll-proportion="-0.31809145">
+            <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />

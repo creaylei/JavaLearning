@@ -151,3 +151,7 @@ system>const>eq_ref>ref>range>index>ALL
 1. limit
 
    limit的
+   
+   ![image-20190719215438108](/Users/zhangleishuidihuzhu.com/Pictures/wiznote/image-20190719215438108.png)
+   
+    

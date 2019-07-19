@@ -353,5 +353,3 @@ Mapper.xml文件中的
      例如：sql如下：
      create_date_time <![CDATA[ >= ]]> #{startTime} and create_date_time <![CDATA[ <= ]]> #{endTime}
      ```
-
-     
