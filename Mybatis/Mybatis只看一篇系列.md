@@ -324,6 +324,81 @@ Mapper.xml文件中的
 
 [Mybatis动态Sql](http://www.mybatis.org/mybatis-3/zh/dynamic-sql.html)
 
+## 3. 自动生成xml和mapper文件
+
+1. 配置generator.xml
+
+   ```
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <!DOCTYPE generatorConfiguration PUBLIC
+           "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+           "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+   <generatorConfiguration>
+   
+   1    <!-- 本地数据库驱动程序jar包的全路径, 要改为自己的 -->
+       <classPathEntry location="C:\Users\\Administrator\\.m2\repository\\mysql\\mysql-connector-java\\8.0.12\\mysql-connector-java-8.0.12.jar"/>
+       <context id="context" targetRuntime="MyBatis3">
+           <commentGenerator>
+           		<!--是否关闭默认的注释   true / false -->
+               <property name="suppressAllComments" value="false"/>
+               <property name="suppressDate" value="true"/>
+           </commentGenerator>
+   
+   2        <!-- 数据库的相关配置  要改为自己的-->
+           <jdbcConnection
+                   driverClass="com.mysql.jdbc.Driver"
+                   connectionURL="jdbc:mysql://localhost:3306/mybatis"
+                   userId="root"
+                   password="jim777"/>
+   
+           <javaTypeResolver>
+               <property name="forceBigDecimals" value="false"/>
+           </javaTypeResolver>
+   
+   3        <!-- 实体类生成的位置 要改-->
+           <javaModelGenerator
+                   targetPackage="com.homejim.mybatis.entity"
+                   targetProject=".\src\main\java">
+               <property name="enableSubPackages" value="false"/>
+               <property name="trimStrings" value="true"/>
+           </javaModelGenerator>
+   
+   4        <!-- *Mapper.xml 文件的位置  sqlMapGenerator-->
+           <sqlMapGenerator
+                   targetPackage="mybatis/mapper"
+                   targetProject=".\src\main\resources">
+               <property name="enableSubPackages" value="false"/>
+           </sqlMapGenerator>
+   
+   5        <!-- Mapper 接口文件的位置 -->
+           <javaClientGenerator type="XMLMAPPER"
+                                targetPackage="com.homejim.mybatis.mapper"
+                                targetProject=".\src\main\java">
+               <property name="enableSubPackages" value="false"/>
+           </javaClientGenerator>
+   
+           <!-- 相关表的配置 -->
+   
+   6       <table tableName="blog" />
+       </context>
+   </generatorConfiguration>
+   ```
+
+   需要改一些内容：
+
+   - 本地数据库驱动程序jar包的全路径（必须要改）。
+   - 数据库的相关配置（必须要改）
+   - 相关表的配置（必须要改）
+   - 实体类生成存放的位置。
+   - MapperXML 生成文件存放的位置。
+   - Mapper 接口存放的位置。
+
+   如果不知道怎么改， 请看后面的配置详解。  图中标注的都要改为自己相应的
+
+   > 官方英文文档   http://www.mybatis.org/generator/configreference/xmlconfig.html
+   >
+   > 中文版本   http://mbg.cndocs.ml/index.html
+
 ## 采坑篇
 
 #### 1.分页查询没效果
