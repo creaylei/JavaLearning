@@ -135,3 +135,22 @@
 
 - @ControllerAdvice：包含@Component。 可以被扫描到，统一处理异常
 - @ExceptionHandler(Exception.class): 用在这个方法上面表示遇到这个异常就执行以下方法
+
+## 6.SpringBoot注解补充
+
+> 这里是不常用的，但是比较实用的
+
+##### @PutMapping = @RequestMapping(method = HttpMethod.PUT)
+
+![UTOOLS1566531946245.png](https://i.loli.net/2019/08/23/jA2QgNkJWqSwKiP.png)
+
+> 这种是可以生成动态的链接
+
+##### @PathVariable 
+
+@PathVariable注解是将方法中的参数绑定到请求URI中的模板变量上。可以通过@RequestMapping注解来指定URI的模板变量，然后使用@PathVariable注解将方法中的参数绑定到模板变量上。特别地，@PathVariable注解允许我们使用value或name属性来给参数取一个别名。下面是使用此注解的一个示例：
+
+![UTOOLS1566532152907.png](https://i.loli.net/2019/08/23/oCwQ5dFrZ6ayD9W.png)
+
+
+

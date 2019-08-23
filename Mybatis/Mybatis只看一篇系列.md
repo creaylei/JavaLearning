@@ -228,7 +228,28 @@ ResultMap中的映射关系
 </dependency>
 ```
 
-2. 两种使用方式
+2. 在yml或者config文件中引入依赖项
+
+   配置文件方式
+
+   ![UTOOLS1566530889650.png](https://i.loli.net/2019/08/23/OLtC36FJ2GVWbsg.png)
+
+   yml方式：
+
+   ```xml
+   plugins:
+       pagehelper:
+         dialect: mysql
+         offsetAsPageNum: true
+         rowBoundsWithCount: true
+         pageSizeZero: true
+         reasonable: false
+         params: 'pageNum=pageHelperStart;pageSize=pageHelperRows;'
+         supportMethodsArguments: false
+         returnPageInfo: none
+   ```
+
+3. 两种使用方式
 
 - 第一种，直接通过RowBounds参数完成分页
 
@@ -398,6 +419,57 @@ Mapper.xml文件中的
    > 官方英文文档   http://www.mybatis.org/generator/configreference/xmlconfig.html
    >
    > 中文版本   http://mbg.cndocs.ml/index.html
+
+## 4. Mybatis别名设计
+
+### 1. 在mybatis_config.xml中Mybatis别名设置
+
+```java
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+        <!-- 对象命名空间 -->
+    <typeAliases>
+         <typeAlias alias="Staff" type="com.tongdatech.Staff"/>
+    </typeAliases>
+   <span style="white-space:pre">	</span> <!-- 映射map -->
+    <mappers>
+    </mappers>
+```
+
+### 2. 还可以在spring-mybatis.xml中配置：
+
+```java
+
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="databaseIdProvider" ref="databaseIdProvider" />
+		<property name="mapperLocations" value="classpath*:/mapper/*/oracle/*.xml" />
+		<!-- 给映射的类配置别名 -->
+ 		<!-- 默认的别名是model类的首字母小写 -->
+	 	<!-- 如：StaffDeploy实体类。别名为：staffDeploy -->
+		<property name="typeAliasesPackage" value="com.tongdatech.demo.domain;com.tongdatech.sys.domain;com.tongdatech.hr.domain" />
+		<property name="plugins">
+			<list>
+				<ref bean="myBatisPaginator" />
+				<ref bean="nullSqlInterceptor" />
+			</list>
+		</property>
+		<property name="configuration">
+			<bean class="org.apache.ibatis.session.Configuration">
+				<property name="objectFactory">
+					<bean class="com.tongdatech.sys.component.mybatis.PageableObjectFactory" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+</bean>
+```
+
+
 
 ## 采坑篇
 
