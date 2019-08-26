@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="更新jodaTime">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md" afterDir="false" />
+    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="新增springIoC文档阅读">
+      <change beforePath="$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -267,6 +265,7 @@
       <workItem from="1564574360598" duration="5000" />
       <workItem from="1566551332754" duration="144000" />
       <workItem from="1566551482941" duration="951000" />
+      <workItem from="1566787177935" duration="332000" />
     </task>
     <task id="LOCAL-00001" summary="更新文件">
       <created>1560501417463</created>
@@ -317,7 +316,21 @@
       <option name="project" value="LOCAL" />
       <updated>1566551410136</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="新增springIoC文档阅读">
+      <created>1566787274398</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1566787274398</updated>
+    </task>
+    <task id="LOCAL-00009" summary="新增springIoC文档阅读">
+      <created>1566787360191</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1566787360191</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,6 +361,7 @@
     <MESSAGE value="更新文件" />
     <MESSAGE value="试着添加图片" />
     <MESSAGE value="更新jodaTime" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新jodaTime" />
+    <MESSAGE value="新增springIoC文档阅读" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增springIoC文档阅读" />
   </component>
 </project>

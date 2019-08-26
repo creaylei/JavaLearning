@@ -28,7 +28,7 @@
 
 下图中的Spring Container就是Spring 的上下文，包含POJOS， 配置等信息
 
-![image-20190611195221863](/Users/zhangleishuidihuzhu.com/Library/Application Support/typora-user-images/image-20190611195221863.png)
+![image-20190611195221863.png](https://i.loli.net/2019/08/26/LPmGEuIfCVyNDZH.png)
 
 **Spring的应用程序上下文**：
 
@@ -46,7 +46,7 @@
 
 **上下文的层次关系**
 
-![image-20190611200154967](/Users/zhangleishuidihuzhu.com/Library/Application Support/typora-user-images/image-20190611200154967.png)
+![image-20190611200154967.png](https://i.loli.net/2019/08/26/nMLrTQ4mUpJCh1S.png)
 
 Service和Repository等定义在了Root 里
 
@@ -134,7 +134,7 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 
 ### 3. SpringMVC中的各种机制
 
-![image-20190612163045717](/Users/zhangleishuidihuzhu.com/Library/Application Support/typora-user-images/image-20190612163045717.png)
+![image-20190612163045717.png](https://i.loli.net/2019/08/26/tiko5mueCVy2OWM.png)
 
 [DispatcherServlet初始化过程](https://blog.csdn.net/yangjiachang1203/article/details/51909471)
 
@@ -201,7 +201,7 @@ mappedHandler.applyPostHandle(processedRequest, response, mv);
 [返回的详细返回官方](https://docs.spring.io/spring/docs/5.1.5.RELEASE/spring-framework-
 reference/web.html#mvc-ann-return-types)
 
-![image-20190612195317027](/Users/zhangleishuidihuzhu.com/Library/Application Support/typora-user-images/image-20190612195317027.png)
+![image-20190612195317027.png](https://i.loli.net/2019/08/26/Qbq5I9K8umTBXdp.png)
 
 ```java
 //同一个路径，不同的传参，不同的Controller     用到@RequestParam
