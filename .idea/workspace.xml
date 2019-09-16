@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="新增springIoC文档阅读">
-      <change beforePath="$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/SpringMVC/SpringMVC.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -265,7 +265,7 @@
       <workItem from="1564574360598" duration="5000" />
       <workItem from="1566551332754" duration="144000" />
       <workItem from="1566551482941" duration="951000" />
-      <workItem from="1566787177935" duration="332000" />
+      <workItem from="1566787177935" duration="1397000" />
     </task>
     <task id="LOCAL-00001" summary="更新文件">
       <created>1560501417463</created>
@@ -330,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566787360191</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="新增springIoC文档阅读">
+      <created>1566787550117</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1566787550117</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
