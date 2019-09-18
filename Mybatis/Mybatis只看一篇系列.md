@@ -471,6 +471,118 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 
 
+## 5.批量处理
+
+### 批量插入
+
+普通Sql
+
+```sql
+INSERT INTO tb_test(ID,NAME) VALUES(1,'zhangsan');
+INSERT INTO tb_test(ID,NAME) VALUES(2,'lisi');
+INSERT INTO tb_test(ID,NAME) VALUES(3,'wangwu');
+```
+
+批量插入
+
+方式一：先将数据建一张表，然后插入表，要比普通sql插入快一倍
+
+```sql
+INSERT INTO MyTable(ID,NAME)
+ SELECT 4,'000'
+ UNION ALL
+ SELECT 5,'001'
+ UNION ALL
+ SELECT 6,'002' ;
+```
+
+方式二
+
+```sql
+INSERT INTO tb_test(ID,NAME) VALUES(7,'zhangsan'),(8,'lisi'),(9,'wangwu');
+```
+
+这里，我们mybatis里面用方式二
+
+```xml
+<insert id = "" >
+	insert into tb_test (id, name)
+	values
+	<foreach collection="list" item="po" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="po.id!=null">#{po.id},</if>
+        <if test="po.name!=null">#{po.name},</if>
+      </trim>
+    </foreach>
+</insert>
+```
+
+---
+
+### 批量更新
+
+普通sql
+
+```sql
+UPDATE course
+    SET name = CASE id 
+        WHEN 1 THEN 'name1'
+        WHEN 2 THEN 'name2'
+        WHEN 3 THEN 'name3'
+    END, 
+    title = CASE id 
+        WHEN 1 THEN 'New Title 1'
+        WHEN 2 THEN 'New Title 2'
+        WHEN 3 THEN 'New Title 3'
+    END
+WHERE id IN (1,2,3)
+```
+
+这条sql的意思是，如果id为1，则name的值为name1，title的值为New Title1；依此类推。
+
+```xml
+<update id="updateBatch" parameterType="list">
+            update course
+            <trim prefix="set" suffixOverrides=",">
+             <trim prefix="peopleId =case" suffix="end,">
+                 <foreach collection="list" item="i" index="index">
+                         <if test="i.peopleId!=null">
+                          when id=#{i.id} then #{i.peopleId}
+                         </if>
+                 </foreach>
+              </trim>
+              <trim prefix=" roadgridid =case" suffix="end,">
+                 <foreach collection="list" item="i" index="index">
+                         <if test="i.roadgridid!=null">
+                          when id=#{i.id} then #{i.roadgridid}
+                         </if>
+                 </foreach>
+              </trim>
+              
+              <trim prefix="type =case" suffix="end," >
+                 <foreach collection="list" item="i" index="index">
+                         <if test="i.type!=null">
+                          when id=#{i.id} then #{i.type}
+                         </if>
+                 </foreach>
+              </trim>
+       				<trim prefix="unitsid =case" suffix="end," >
+                  <foreach collection="list" item="i" index="index">
+                          <if test="i.unitsid!=null">
+                           when id=#{i.id} then #{i.unitsid}
+                          </if>
+                  </foreach>
+           		</trim>
+            </trim>
+            where
+            <foreach collection="list" separator="or" item="i" index="index" >
+              id=#{i.id}
+          </foreach>
+</update>
+```
+
+
+
 ## 采坑篇
 
 #### 1.分页查询没效果
