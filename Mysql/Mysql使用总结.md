@@ -146,9 +146,29 @@ system>const>eq_ref>ref>range>index>ALL
 
 （5）使用explain了解并优化执行计划，非常重要；
 
+### 2. Group_concat
+
+使用group_concat必须配合group by分组， 因为是一对多的场景
+
+group_concat([DISTINCT]要连接的字段[order by ASC/DESC排序字段][Separator'分隔符'])
+
+```sql
+select group_concat(name) from table t where () group_by id
+```
+
+## 4.三范式
+
+第一范式：1NF是对属性的原子性约束，要求属性具有原子性，不可再分解；
+
+第二范式：2NF是对记录的惟一性约束，要求记录有惟一标识，即实体的惟一性；
+
+第三范式：3NF是对字段冗余性的约束，即任何字段不能由其他字段派生出来，它要求字段没有冗余。
+
+没有冗余的数据库设计可以做到。但是，没有冗余的数据库未必是最好的数据库，有时为了提高运行效率，就必须降低范式标准，适当保留冗余数据。具体做法是：在概念数据模型设计时遵守第三范式，降低范式标准的工作放到物理数据模型设计时考虑。降低范式就是增加字段，允许冗余
+
 ## 4. 错误用法
 
 1. limit
 
    limit的
-   
+
