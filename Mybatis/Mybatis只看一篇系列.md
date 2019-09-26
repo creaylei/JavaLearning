@@ -49,7 +49,7 @@ pullic class Application{
 ### 4.编写Dao层
 
 ```java
-//Entity
+//Entity 实体类
 写一个
 @Data
 public class BaseEntity{
@@ -344,6 +344,73 @@ Mapper.xml文件中的
 ```
 
 [Mybatis动态Sql](http://www.mybatis.org/mybatis-3/zh/dynamic-sql.html)
+
+> <foreach>各项介绍
+
+**<item> 每一个实体类的名称**
+
+```xml
+ <foreach collection="list" item="po" open="(" separator="," close=")">
+            #{po.id}
+ </foreach>
+```
+
+ **<index> 迭代的次数，也可认为是当前执行的行号，需要做判断的时候可以用，但是一般用不着**
+
+这里有个小应用：
+
+场景：树状菜单拖拽，如下
+
+![UTOOLS1569468257974.png](https://img03.sogoucdn.com/app/a/100520146/585b38d0103d58fe75853185393bf348)
+
+每次需要拖拽排序，
+
+- 当前的做法是前端，在传参数的时候，排好序一起传过来。
+
+- 另一种做法是：直接传个list过来，sort字段不用管，按传过来的顺序，批量插入/更改
+
+  具体的做法如下
+
+  1. 自己建了一个tree_sort的表，如下
+
+  ![UTOOLS1569468597701.png](https://img04.sogoucdn.com/app/a/100520146/4535cb10b82c80651a61b0fe62fd85f3)
+
+  
+
+  2. 代码
+
+  ```java
+  List<TreeSortPo> treeSortPos = Lists.newArrayList();
+          for (int i = 0; i < 10; i++) {
+              TreeSortPo sortPo = new TreeSortPo();
+              sortPo.setName("第"+i+"个PO");
+              treeSortPos.add(sortPo);
+          }
+          treeSortPoMapper.batchInsert(treeSortPos);
+  ```
+
+  mapper层
+
+  ```xml
+  <insert id="batchInsert" parameterType="com.example.demo.po.TreeSortPo" keyProperty="id" useGeneratedKeys="true">
+      insert into tree_sort (`name`, sort)
+      values
+      <foreach collection="list" item="po" separator="," index="idx">
+        (#{po.name},
+        #{idx})
+      </foreach>
+    </insert>
+  ```
+
+  这里就可以看到 `index="idx"` ，下面插入数据的时候，直接复制`sort` 字段`#{idx}` 
+
+  3. 效果
+
+  ![UTOOLS1569468527312.png](https://img04.sogoucdn.com/app/a/100520146/49cc75c4ee93a5fda308c21a226df89d)
+
+  也可将`#{idx}` 改为 `#{idx}+1`, 效果如下
+
+  ![UTOOLS1569468571403.png](https://img03.sogoucdn.com/app/a/100520146/5546ffcd2603cedab87abb63b7af96b3)
 
 ## 3. 自动生成xml和mapper文件
 
