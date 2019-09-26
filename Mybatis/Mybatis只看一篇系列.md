@@ -347,7 +347,7 @@ Mapper.xml文件中的
 
 > <foreach>各项介绍
 
-**<item> 每一个实体类的名称**
+**item 每一个实体类的名称**
 
 ```xml
  <foreach collection="list" item="po" open="(" separator="," close=")">
@@ -355,7 +355,7 @@ Mapper.xml文件中的
  </foreach>
 ```
 
- **<index> 迭代的次数，也可认为是当前执行的行号，需要做判断的时候可以用，但是一般用不着**
+ **index 迭代的次数，也可认为是当前执行的行号，需要做判断的时候可以用，但是一般用不着**
 
 这里有个小应用：
 
