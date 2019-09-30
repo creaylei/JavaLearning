@@ -706,7 +706,78 @@ keyProperty="id"   如果是实体类PO，则在插入库中之后，之前的Po
    这里还要注意   <resultMap   type>  中的type标签，中间放的是映射的pojo对象
    ```
 
-   
+2. 查询po类中带list，和其他po 的
+
+```xml
+//mapper层
+<select id="getAllMenu" resultMap="BaseResultMap">
+      SELECT
+	m.*, r.`id` AS rid ,
+	r.`name` AS rname ,
+	r.`nameZh` AS rnamezh
+	FROM
+	menu m
+	LEFT JOIN menu_role mr ON m.`id` = mr.`mid`
+	LEFT JOIN role r ON mr.`rid` = r.`id`
+	WHERE
+	m.`enabled` = TRUE
+	ORDER BY
+	m.`id` DESC  
+</select>
+  
+其中ResultMap，认真学习
+  <resultMap id="BaseResultMap" type="org.sang.bean.Menu">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="path" property="path" jdbcType="VARCHAR"/>
+        <result column="component" property="component" javaType="java.lang.Object"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="iconCls" property="iconCls" jdbcType="VARCHAR"/>
+        <result column="keepAlive" property="keepAlive" jdbcType="BIT"/>
+        <result column="parentId" property="parentId" jdbcType="INTEGER"/>
+        <association property="meta" javaType="org.sang.bean.MenuMeta">
+            <result column="keepAlive" property="keepAlive"/>
+            <result column="requireAuth" property="requireAuth"/>
+        </association>
+        <collection property="roles" ofType="org.sang.bean.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+            <result column="rnamezh" property="nameZh"/>
+        </collection>
+        <collection property="children" ofType="org.sang.bean.Menu">
+            <id column="id2" property="id"/>
+            <result column="path2" property="path" jdbcType="VARCHAR"/>
+            <result column="component2" property="component" jdbcType="VARCHAR"/>
+            <result column="name2" property="name" jdbcType="VARCHAR"/>
+            <result column="iconCls2" property="iconCls" jdbcType="VARCHAR"/>
+            <association property="meta" javaType="org.sang.bean.MenuMeta">
+                <result column="keepAlive2" property="keepAlive"/>
+                <result column="requireAuth2" property="requireAuth"/>
+            </association>
+            <collection property="children" ofType="org.sang.bean.Menu">
+                <id column="id3" property="id"/>
+                <result column="name3" property="name" jdbcType="VARCHAR"/>
+            </collection>
+        </collection>
+    </resultMap>
+```
+
+简单的理解就是，`association` 查询属性是单个po，collection查询的是`list<Po>` ,为了便于理解，再看看`Menu` 类
+
+```java
+public class Menu implements Serializable {
+    private Long id;
+    private String url;
+    private String path;
+    private Object component;
+    private String name;
+    private String iconCls;
+    private Long parentId;
+    private List<Role> roles;
+    private List<Menu> children;
+    private MenuMeta meta;
+}
+```
 
 ## 采坑篇
 
