@@ -166,6 +166,34 @@ select group_concat(name) from table t where () group_by id
 
 没有冗余的数据库设计可以做到。但是，没有冗余的数据库未必是最好的数据库，有时为了提高运行效率，就必须降低范式标准，适当保留冗余数据。具体做法是：在概念数据模型设计时遵守第三范式，降低范式标准的工作放到物理数据模型设计时考虑。降低范式就是增加字段，允许冗余
 
+## 5.索引失效
+
+1. 对于创建的多列索引（复合索引），不是使用的第一部分就不会使用索引
+
+   ```sql
+   alter table student add index my_index(name, age)   // name左边的列， age 右边的列                                                              
+   
+   select * from student where name = 'aaa'     // 会用到索引
+   
+   select * from student where age = 18          //  不会使用索引
+   ```
+
+2. 对于使用 like 查询， 查询如果是 ‘%aaa’ 不会使用索引，而 ‘aaa%’ 会使用到索引。
+
+   `select * from student where name like 'aaa%'` // 会用到索引
+
+   ```sql
+   select * from student where name like '%aaa'        或者   '_aaa'   //  不会使用索引
+   ```
+
+3. 如果条件中有 or， 有条件没有使用索引，即使其中有条件带索引也不会使用，换言之， 就是要求使用的所有字段，都必须单独使用时能使用索引。
+
+4. 如果列类型是字符串，那么一定要在条件中使用引号引用起来，否则不使用索引。
+
+5. 如果mysql认为全表扫面要比使用索引快，则不使用索引。
+
+   如：表里只有一条数据。
+
 ## 4. 错误用法
 
 1. limit

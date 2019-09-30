@@ -315,3 +315,329 @@ protected int doLoadBeanDefinitions(InputSource inputSource, Resource resource)
 2. 调用 `loadDocument()` 根据 xml 文件获取相应的 Document 实例。
 
 3. 调用 `registerBeanDefinitions()` 注册 Bean 实例。
+
+### XML文件的验证模式
+
+> 上面讲到通过调用 `getValidationModeForResource()` 获取 xml 文件的验证模式，这里详细介绍下xml文件的正确性
+
+DTD和XSD的区别
+
+DTD(Document Type Definition)，即文档类型定义，为 XML 文件的验证机制，属于 XML 文件中组成的一部分。DTD 是一种保证 XML 文档格式正确的有效验证方式，它定义了相关 XML 文档的元素、属性、排列方式、元素的内容类型以及元素的层次结构。其实 DTD 就相当于 XML 中的 “词汇”和“语法”，我们可以通过比较 XML 文件和 DTD 文件 来看文档是否符合规范，元素和标签使用是否正确。
+
+要在 Spring 中使用 DTD，需要在 Spring XML 文件头部声明：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC  "-//SPRING//DTD BEAN//EN"  "http://www.springframework.org/dtd/spring-beans.dtd">
+```
+
+DTD 在一定的阶段推动了 XML 的发展，但是它本身存在着一些缺陷：
+
+1. 它没有使用 XML 格式，而是自己定义了一套格式，相对解析器的重用性较差；而且 DTD 的构建和访问没有标准的编程接口，因而解析器很难简单的解析 DTD 文档。
+2. DTD 对元素的类型限制较少；同时其他的约束力也叫弱。
+3. DTD 扩展能力较差。
+4. 基于正则表达式的 DTD 文档的描述能力有限。
+
+针对 DTD 的缺陷，W3C 在 2001 年推出 XSD。XSD（XML Schemas Definition）即 XML Schema 语言。XML Schema 本身就是一个 XML文档，使用的是 XML 语法，因此可以很方便的解析 XSD 文档。
+
+`getValidationModeForResource()` 分析
+
+```java
+protected int getValidationModeForResource(Resource resource) {
+        // 获取指定的验证模式
+        int validationModeToUse = getValidationMode();
+        // 如果手动指定，则直接返回
+        if (validationModeToUse != VALIDATION_AUTO) {
+            return validationModeToUse;
+        }
+        // 通过程序检测
+        int detectedMode = detectValidationMode(resource);
+        if (detectedMode != VALIDATION_AUTO) {
+            return detectedMode;
+        }
+
+        // 出现异常，返回 XSD
+        return VALIDATION_XSD;
+    }
+```
+
+如果指定了 XML 文件的的验证模式（调用`XmlBeanDefinitionReader.setValidating(boolean validating)`）则直接返回指定的验证模式，否则调用 `detectValidationMode()` 获取相应的验证模式，如下：
+
+```java
+protected int detectValidationMode(Resource resource) {
+        if (resource.isOpen()) {
+            throw new BeanDefinitionStoreException(
+                    "Passed-in Resource [" + resource + "] contains an open stream: " +
+                    "cannot determine validation mode automatically. Either pass in a Resource " +
+                    "that is able to create fresh streams, or explicitly specify the validationMode " +
+                    "on your XmlBeanDefinitionReader instance.");
+        }
+
+        InputStream inputStream;
+        try {
+            inputStream = resource.getInputStream();
+        }
+        catch (IOException ex) {
+            throw new BeanDefinitionStoreException(
+                    "Unable to determine validation mode for [" + resource + "]: cannot open InputStream. " +
+                    "Did you attempt to load directly from a SAX InputSource without specifying the " +
+                    "validationMode on your XmlBeanDefinitionReader instance?", ex);
+        }
+
+        try {
+          // 核心方法
+            return this.validationModeDetector.detectValidationMode(inputStream);
+        }
+        catch (IOException ex) {
+            throw new BeanDefinitionStoreException("Unable to determine validation mode for [" +
+                    resource + "]: an error occurred whilst reading from the InputStream.", ex);
+        }
+    }
+```
+
+前面一大堆的代码，核心在于 `this.validationModeDetector.detectValidationMode(inputStream)`，validationModeDetector 定义为 `XmlValidationModeDetector`,所以验证模式的获取委托给 `XmlValidationModeDetector` 的 `detectValidationMode()` 方法。
+
+```java
+ public int detectValidationMode(InputStream inputStream) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        try {
+            boolean isDtdValidated = false;
+            String content;
+            // 一行一行读取 xml 文件的内容
+            while ((content = reader.readLine()) != null) {
+                content = consumeCommentTokens(content);
+                if (this.inComment || !StringUtils.hasText(content)) {
+                    continue;
+                }
+                // 包含 DOCTYPE 为 DTD 模式
+                if (hasDoctype(content)) {
+                    isDtdValidated = true;
+                    break;
+                }
+                // 读取 < 开始符号，验证模式一定会在 < 符号之前
+                if (hasOpeningTag(content)) {
+                    // End of meaningful data...
+                    break;
+                }
+            }
+        // 为 true 返回 DTD，否则返回 XSD
+            return (isDtdValidated ? VALIDATION_DTD : VALIDATION_XSD);
+        }
+        catch (CharConversionException ex) {
+            // 出现异常，为 XSD
+            return VALIDATION_AUTO;
+        }
+        finally {
+            reader.close();
+        }
+    }
+```
+
+从代码中看，主要是通过读取 XML 文件的内容，判断内容中是否包含有 DOCTYPE ，如果是 则为 DTD，否则为 XSD，当然只会读取到 第一个 “<” 处，因为 验证模式一定会在第一个 “<” 之前。如果当中出现了 CharConversionException 异常，则为 XSD模式。
+
+好了，XML 文件的验证模式分析完毕，下篇分析 `doLoadBeanDefinitions()` 的第二个步骤：获取 Document 实例。
+
+### Ioc之获取Document对象
+
+`XmlBeanDefinitionReader` 类的
+
+```java
+ protected Document doLoadDocument(InputSource inputSource, Resource resource) throws Exception {
+        return this.documentLoader.loadDocument(inputSource, getEntityResolver(), this.errorHandler,
+                getValidationModeForResource(resource), isNamespaceAware());
+    }
+```
+
+上面，我们说了`doLoadDocument` 的核心逻辑，这个方法做了两件事，一是调用 `getValidationModeForResource()` 获取 XML 的验证模式，二是调用 `DocumentLoader.loadDocument()` 获取 Document 对象。上篇博客已经分析了获取 XML 验证模式（[【死磕Spring】—– IOC 之 获取验证模型](http://cmsblogs.com/?p=2688)），这篇我们分析获取 Document 对象。 
+
+`DcoumentLoad` 是用来获取document的策略接口，如下 
+
+```java
+public interface DocumentLoader {
+    Document loadDocument(
+            InputSource inputSource, EntityResolver entityResolver,
+            ErrorHandler errorHandler, int validationMode, boolean namespaceAware)
+            throws Exception;
+
+}
+
+里面的loadDocument方法，由DefaultDocumentLoader实现，如下
+
+@Override
+	public Document loadDocument(InputSource inputSource, EntityResolver entityResolver,
+			ErrorHandler errorHandler, int validationMode, boolean namespaceAware) throws Exception {
+
+		DocumentBuilderFactory factory = createDocumentBuilderFactory(validationMode, namespaceAware);
+		if (logger.isTraceEnabled()) {
+			logger.trace("Using JAXP provider [" + factory.getClass().getName() + "]");
+		}
+		DocumentBuilder builder = createDocumentBuilder(factory, entityResolver, errorHandler);
+		return builder.parse(inputSource);
+	}
+```
+
+DocumentLoader 中只有一个方法
+
+loadDocument() ，该方法接收五个参数：
+* inputSource：加载 Document 的 Resource 源
+* entityResolver：解析文件的解析器
+* errorHandler：处理加载 Document 对象的过程的错误
+* validationMode：验证模式
+* namespaceAware：命名空间支持。如果要提供对 XML 名称空间的支持，则为true 该方法由 DocumentLoader 的默认实现类
+
+首先调用
+
+`createDocumentBuilderFactory()` 创建 DocumentBuilderFactory ，再通过该 factory 创建 DocumentBuilder，最后解析 InputSource 返回 Document 对象。
+
+**EntityResolver 通过**
+
+其中有一个参数entityResolver，它是通过`getEntityResolver()` 获取
+
+> `getEntityResolver()` 返回指定的解析器，如果没有指定，则构造一个未指定的默认解析器。
+
+```java
+protected EntityResolver getEntityResolver() {
+        if (this.entityResolver == null) {
+            ResourceLoader resourceLoader = getResourceLoader();
+            if (resourceLoader != null) {
+                this.entityResolver = new ResourceEntityResolver(resourceLoader);
+            }
+            else {
+                this.entityResolver = new DelegatingEntityResolver(getBeanClassLoader());
+            }
+        }
+        return this.entityResolver;
+    }
+```
+
+如果 ResourceLoader 不为 null，则根据指定的 ResourceLoader 创建一个 ResourceEntityResolver。如果 ResourceLoader 为null，则创建 一个 DelegatingEntityResolver，该 Resolver 委托给默认的 BeansDtdResolver 和 PluggableSchemaResolver 。
+
+- ResourceEntityResolver：继承自 EntityResolver ，通过 ResourceLoader 来解析实体的引用。
+- DelegatingEntityResolver：EntityResolver 的实现，分别代理了 dtd 的 BeansDtdResolver 和 xml schemas 的 PluggableSchemaResolver。
+- BeansDtdResolver ： spring bean dtd 解析器。EntityResolver 的实现，用来从 classpath 或者 jar 文件加载 dtd。
+- PluggableSchemaResolver：使用一系列 Map 文件将 schema url 解析到本地 classpath 资源
+
+**重要点： `getEntityResolver()` 返回 EntityResolver ，那这个 EntityResolver 到底是什么呢？**
+
+> If a SAX application needs to implement customized handling for external entities, it must implement this interface and register an instance with the SAX driver using the setEntityResolver method.
+> 就是说：如果 SAX 应用程序需要实现自定义处理外部实体，则必须实现此接口并使用 `setEntityResolver()` 向 SAX 驱动器注册一个实例。 如下：
+
+```java
+public class MyResolver implements EntityResolver {
+     public InputSource resolveEntity (String publicId, String systemId){
+       if (systemId.equals("http://www.myhost.com/today")){
+         MyReader reader = new MyReader();
+         return new InputSource(reader);
+       } else {
+            // use the default behaviour
+            return null;
+       }
+     }
+   }
+```
+
+我们首先将
+
+`spring-student.xml` 文件中的 XSD 声明的地址改掉，如下：
+
+![UTOOLS1569383303382.png](https://img02.sogoucdn.com/app/a/100520146/88879202e7a63936414d2a4884701968)
+
+如果再次运行程序，会报如下错误
+
+![UTOOLS1569383349937.png](https://img02.sogoucdn.com/app/a/100520146/18424ec11ec2e506fe483e4dc40a95d8)
+
+从上面的错误可以看到，是在进行文档验证时，无法根据声明找到 XSD 验证文件而导致无法进行 XML 文件验证。在([【死磕Spring】—– IOC 之 获取验证模型](http://cmsblogs.com/?p=2688))中讲到，如果要解析一个 XML 文件，SAX 首先会读取该 XML 文档上的声明，然后根据声明去寻找相应的 DTD 定义，以便对文档进行验证。默认的加载规则是通过网络方式下载验证文件，而在实际生产环境中我们会遇到网络中断或者不可用状态，那么就应用就会因为无法下载验证文件而报错。
+
+> EntityResolver作用：应用本身提供一个如何寻找验证文件的方法，即自定义实现。接口声明如下
+
+```java
+public interface EntityResolver {
+    public abstract InputSource resolveEntity (String publicId,String systemId)
+        throws SAXException, IOException;
+}
+```
+
+接口方法接收两个参数 publicId 和 systemId，并返回 InputSource 对象。两个参数声明如下：
+
+- publicId：被引用的外部实体的公共标识符，如果没有提供，则返回null
+- systemId：被引用的外部实体的系统标识符 这两个参数的实际内容和具体的验证模式有关系。如下
+- XSD 验证模式
+  - publicId：null
+  - systemId：http://www.springframework.org/schema/beans/spring-beans.xsd
+- DTD 验证模式
+  - publicId：-//SPRING//DTD BEAN 2.0//EN
+  - systemId：http://www.springframework.org/dtd/spring-beans.dtd 如下：
+
+![UTOOLS1569383524469.png](https://img02.sogoucdn.com/app/a/100520146/395b425f30996acc5351e32627ac1abf)
+
+我们知道在 Spring 中使用 DelegatingEntityResolver 为 EntityResolver 的实现类，`resolveEntity()` 实现如下：
+
+```java
+public InputSource resolveEntity(String publicId, @Nullable String systemId) throws SAXException, IOException {
+        if (systemId != null) {
+            if (systemId.endsWith(DTD_SUFFIX)) {
+                return this.dtdResolver.resolveEntity(publicId, systemId);
+            }
+            else if (systemId.endsWith(XSD_SUFFIX)) {
+                return this.schemaResolver.resolveEntity(publicId, systemId);
+            }
+        }
+        return null;
+    }
+```
+
+不同的验证模式使用不同的解析器解析，如果是 DTD 验证模式则使用 BeansDtdResolver 来进行解析，如果是 XSD 则使用 PluggableSchemaResolver 来进行解析。
+
+```java
+ public InputSource resolveEntity(String publicId, @Nullable String systemId) throws IOException {
+        if (logger.isTraceEnabled()) {
+            logger.trace("Trying to resolve XML entity with public ID [" + publicId +
+                    "] and system ID [" + systemId + "]");
+        }
+        if (systemId != null && systemId.endsWith(DTD_EXTENSION)) {
+            int lastPathSeparator = systemId.lastIndexOf('/');
+            int dtdNameStart = systemId.indexOf(DTD_NAME, lastPathSeparator);
+            if (dtdNameStart != -1) {
+                String dtdFile = DTD_NAME + DTD_EXTENSION;
+                if (logger.isTraceEnabled()) {
+                    logger.trace("Trying to locate [" + dtdFile + "] in Spring jar on classpath");
+                }
+                try {
+                    Resource resource = new ClassPathResource(dtdFile, getClass());
+                    InputSource source = new InputSource(resource.getInputStream());
+                    source.setPublicId(publicId);
+                    source.setSystemId(systemId);
+                    if (logger.isDebugEnabled()) {
+                        logger.debug("Found beans DTD [" + systemId + "] in classpath: " + dtdFile);
+                    }
+                    return source;
+                }
+                catch (IOException ex) {
+                    if (logger.isDebugEnabled()) {
+                        logger.debug("Could not resolve beans DTD [" + systemId + "]: not found in classpath", ex);
+                    }
+                }
+            }
+        }
+or wherever.
+        return null;
+    }
+```
+
+`BeansDtdResolver.resolveEntity()` 只是对 systemId 进行了简单的校验（从最后一个 / 开始，内容中是否包含 `spring-beans`），然后构造一个 InputSource 并设置 publicId、systemId，然后返回。
+
+首先调用 getSchemaMappings() 获取一个映射表(systemId 与其在本地的对照关系)，然后根据传入的 systemId 获取该 systemId 在本地的路径 resourceLocation，最后根据 resourceLocation 构造 InputSource 对象。 
+
+### Ioc之注册BeanDefinition
+
+获取 Document 对象后，会根据该对象和 Resource 资源对象调用 `registerBeanDefinitions()` 方法，开始注册 BeanDefinitions 之旅。如下：
+
+```java
+public int registerBeanDefinitions(Document doc, Resource resource) throws BeanDefinitionStoreException {
+        BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
+        int countBefore = getRegistry().getBeanDefinitionCount();
+        documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
+        return getRegistry().getBeanDefinitionCount() - countBefore;
+}
+```
+
