@@ -156,6 +156,48 @@ group_concat([DISTINCT]要连接的字段[order by ASC/DESC排序字段][Separat
 select group_concat(name) from table t where () group_by id
 ```
 
+
+
+### 3.存储过程
+
+一组为了完成特定功能的SQL 语句集，它存储在数据库中，一次编译后永久有效，用户通过指定存储过程的名字并给出参数（如果该存储过程带有参数）来执行它。存储过程是数据库中的一个重要对象。速度快
+
+#### 创建
+
+```sql
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addUser`(IN username varchar(20), IN sex tinyint(1), IN age int(20))
+BEGIN
+	insert into t_user set user_name=username,sex=sex,age=age;
+END
+```
+
+definer:指创建者，不写为默认
+
+IN 代表输入参数， OUT 代表输出  INOUT代表输入输出
+
+varchar后面的(20)必须写，不写会报错
+
+BEGIN-END中间是存储过程执行的sql
+
+#### 使用
+
+```sql
+call addUser('ZHANG1',0,20)
+```
+
+直接调用所传的参数就可以
+
+#### 利弊
+
+**利**：可以减少代码逻辑，提高运行速度
+
+**弊：**
+
+1. 本身的运算性能会更差，远远低于外部java程序，之所以用存储过程，常常是因为某个业务逻辑过于复杂，难以用sql描述
+2. 存储过程需要编译才能使用，修改算法时候，要dba的配合，造成安全性威胁
+3. 不好管理
+4. 能不用则不用
+
 ## 4.三范式
 
 第一范式：1NF是对属性的原子性约束，要求属性具有原子性，不可再分解；
@@ -199,4 +241,6 @@ select group_concat(name) from table t where () group_by id
 1. limit
 
    limit的
+
+
 
