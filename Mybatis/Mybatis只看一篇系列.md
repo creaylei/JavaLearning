@@ -330,7 +330,19 @@ Mapper.xml文件中的
 
 *foreach* 元素的功能非常强大，它允许你指定一个集合，声明可以在元素体内使用的集合项（item）和索引（index）变量。它也允许你指定开头与结尾的字符串以及在迭代结果之间放置分隔符。这个元素是很智能的，因此它不会偶然地附加多余的分隔符。
 
-自己写的
+#### 当遍历是array、list、或者map
+
+- 如果传入的是单参数且参数类型是一个List的时候，collection属性值为list .
+- 如果传入的是单参数且参数类型是一个array数组的时候，collection的属性值为array .
+- 如果传入的参数是多个的时候，我们就需要把它们封装成一个Map了，当然单参数也可以封装成map，实际上如果你在传入参数的时候，在MyBatis里面也是会把它封装成一个Map的，map的key就是参数名，所以这个时候collection属性值就是传入的List或array对象在自己封装的map里面的key.
+
+官方说法
+
+> 注意 你可以将一个 List 实例或者数组作为参数对象传给 MyBatis，当你这么做的时候，MyBatis 会自动将它包装在一个 Map 中并以名称为键。List 实例将会以“list”作为键，而数组实例的键将是“array”。
+
+所以，不管是多参数还是单参数的list,array类型，都可以封装为map进行传递。如果传递的是一个List，则mybatis会封装为一个list为key，list值为object的map，如果是array，则封装成一个array为key，array的值为object的map，如果自己封装呢，则colloection里放的是自己封装的map里的key值
+
+**自己写的**
 
 ```xml
 <select id="queryRobotKnowledgeByIdList" resultType="com.shuidihuzhu.cs.robot.po.RobotKnowledgePo">
@@ -778,6 +790,16 @@ public class Menu implements Serializable {
     private MenuMeta meta;
 }
 ```
+
+### Mapper文件里的数据类型转换
+
+```xml
+<select id="getMaxWorkID" resultType="Long">
+    SELECT workID from employee where id=(select max(id) from employee)
+</select>
+```
+
+这里workId在数据库中是char类型的，resultType是Long类型，内部就会自动转型。
 
 ## 采坑篇
 

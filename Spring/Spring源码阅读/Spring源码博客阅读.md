@@ -641,3 +641,107 @@ public int registerBeanDefinitions(Document doc, Resource resource) throws BeanD
 }
 ```
 
+首先调用 `createBeanDefinitionDocumentReader()` 方法实例化 BeanDefinitionDocumentReader 对象，然后获取统计前 BeanDefinition 的个数，最后调用 `registerBeanDefinitions()` 注册 BeanDefinition。 实例化 BeanDefinitionDocumentReader 对象方法如下：
+
+```java
+protected BeanDefinitionDocumentReader createBeanDefinitionDocumentReader() {
+        return BeanDefinitionDocumentReader.class.cast(BeanUtils.instantiateClass(this.documentReaderClass));}
+```
+
+注册 BeanDefinition 的方法 `registerBeanDefinitions()` 是在接口 BeanDefinitionDocumentReader 中定义，如下
+
+```java
+void registerBeanDefinitions(Document doc, XmlReaderContext readerContext)
+            throws BeanDefinitionStoreException;
+```
+
+**从给定的 Document 对象中解析定义的 BeanDefinition 并将他们注册到注册表中**。方法接收两个参数，待解析的 Document 对象，以及解析器的当前上下文，包括目标注册表和被解析的资源。其中 readerContext 是根据 Resource 来创建的，如下：
+
+DefaultBeanDefinitionDocumentReader 对该方法提供了实现：
+
+```java
+public void registerBeanDefinitions(Document doc, XmlReaderContext readerContext) {
+        this.readerContext = readerContext;
+        logger.debug("Loading bean definitions");
+        Element root = doc.getDocumentElement();
+        doRegisterBeanDefinitions(root);
+    }
+```
+
+调用 `doRegisterBeanDefinitions()` 开启注册 BeanDefinition 之旅。
+
+程序首先处理 profile属性，profile主要用于我们切换环境，比如切换开发、测试、生产环境，非常方便。然后调用 `parseBeanDefinitions()` 进行解析动作，不过在该方法之前之后分别调用 `preProcessXml()` 和 `postProcessXml()` 方法来进行前、后处理，目前这两个方法都是空实现，交由子类来实现。
+
+`parseBeanDefinitions()` 定义如下：
+
+```java
+protected void parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate) {
+        if (delegate.isDefaultNamespace(root)) {
+            NodeList nl = root.getChildNodes();
+            for (int i = 0; i < nl.getLength(); i++) {
+                Node node = nl.item(i);
+                if (node instanceof Element) {
+                    Element ele = (Element) node;
+                    if (delegate.isDefaultNamespace(ele)) {
+                        parseDefaultElement(ele, delegate);
+                    }
+                    else {
+                        delegate.parseCustomElement(ele);
+                    }
+                }
+            }
+        }
+        else {
+            delegate.parseCustomElement(root);
+        }
+    }
+```
+
+最终解析动作落地在两个方法处：`parseDefaultElement(ele, delegate)` `delegate.parseCustomElement(root)`
+
+- 配置文件式声明：`<bean id="studentService" class="org.springframework.core.StudentService"/>`
+- 自定义注解方式：`<tx:annotation-driven>`
+
+两种方式的读取和解析都存在较大的差异，所以采用不同的解析方法，如果根节点或者子节点采用默认命名空间的话，则调用 `parseDefaultElement()``delegate.parseCustomElement()``doLoadBeanDefinitions()`
+
+### IoC之核心解析
+
+上一节分析到，有两种解析bean的方式：
+
+- `parseDefaultElement()` 对使用默认命名空间的bean
+- `delegate.parseCustomElement` 自定义解析
+
+**整个过程比较清晰：分别是对四种不同的标签进行解析，分别是 import、alias、bean、beans。咱门从第一个标签 import 开始。**
+
+```java
+private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate delegate) {
+       // 对 import 标签的解析
+        if (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) {
+            importBeanDefinitionResource(ele);
+        }
+        // 对 alias 标签的解析
+        else if (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) {
+            processAliasRegistration(ele);
+        }
+        // 对 bean 标签的解析
+        else if (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) {
+            processBeanDefinition(ele, delegate);
+        }
+        // 对 beans 标签的解析
+        else if (delegate.nodeNameEquals(ele, NESTED_BEANS_ELEMENT)) {
+            // recurse
+            doRegisterBeanDefinitions(ele);
+        }
+    }
+```
+
+#### import标签处理
+
+**获取 source 属性值，得到正确的资源路径，然后调用 loadBeanDefinitions() 方法进行递归的 BeanDefinition 加载**
+
+#### Bean标签处理：重要
+
+本节前面部分当标签是 bean 的时候，调用 `processBeanDefinition(ele, delegate)` 
+
+### [注册BeanDefinition](http://cmsblogs.com/?p=2763)
+
