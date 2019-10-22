@@ -739,7 +739,9 @@ private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate deleg
 
 **获取 source 属性值，得到正确的资源路径，然后调用 loadBeanDefinitions() 方法进行递归的 BeanDefinition 加载**
 
-#### [Bean标签处理：重要]([https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/Bean%E6%A0%87%E7%AD%BE%E7%9A%84%E5%A4%84%E7%90%86.md](https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring源码阅读/Bean标签的处理.md))
+#### Bean标签处理：重要
+
+> [https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/Bean%E6%A0%87%E7%AD%BE%E7%9A%84%E5%A4%84%E7%90%86.md](https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring源码阅读/Bean标签的处理.md)
 
 本节前面部分当标签是 bean 的时候，调用 `processBeanDefinition(ele, delegate)` 
 
@@ -758,4 +760,4 @@ Spring 在实现上述功能中，将整个流程分为两个阶段：容器初�
 
 第一个阶段，已经通过10多篇文章分析完成。这里开始分析第二个阶段。
 
-- [开启Bean加载]([https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/5%E5%BC%80%E5%90%AFBean%E5%8A%A0%E8%BD%BD.md](https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring源码阅读/5开启Bean加载.md))
+详细看：[https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/5%E5%BC%80%E5%90%AFBean%E5%8A%A0%E8%BD%BD.md](https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring源码阅读/5开启Bean加载.md)
