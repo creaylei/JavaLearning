@@ -739,7 +739,7 @@ private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate deleg
 
 **获取 source 属性值，得到正确的资源路径，然后调用 loadBeanDefinitions() 方法进行递归的 BeanDefinition 加载**
 
-#### Bean标签处理：重要
+#### [Bean标签处理：重要]([https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/Bean%E6%A0%87%E7%AD%BE%E7%9A%84%E5%A4%84%E7%90%86.md](https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring源码阅读/Bean标签的处理.md))
 
 本节前面部分当标签是 bean 的时候，调用 `processBeanDefinition(ele, delegate)` 
 
@@ -757,3 +757,5 @@ Spring 在实现上述功能中，将整个流程分为两个阶段：容器初�
 - **加载 bean 阶段**：经过容器初始化阶段后，应用程序中定义的 bean 信息已经全部加载到系统中了，当我们显示或者隐式地调用 `getBean()` 时，则会触发加载 bean 阶段。在这阶段，容器会首先检查所请求的对象是否已经初始化完成了，如果没有，则会根据注册的 bean 信息实例化请求的对象，并为其注册依赖，然后将其返回给请求方。至此第二个阶段也已经完成。
 
 第一个阶段，已经通过10多篇文章分析完成。这里开始分析第二个阶段。
+
+- [开启Bean加载]([https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/5%E5%BC%80%E5%90%AFBean%E5%8A%A0%E8%BD%BD.md](https://github.com/creaylei/JavaLearning/blob/master/Spring/Spring源码阅读/5开启Bean加载.md))
