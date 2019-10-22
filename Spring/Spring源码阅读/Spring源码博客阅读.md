@@ -745,3 +745,15 @@ private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate deleg
 
 ### [注册BeanDefinition](http://cmsblogs.com/?p=2763)
 
+## 4. [初始化总结](http://cmsblogs.com/?p=2790)
+
+## 5. [开启Bean加载](http://cmsblogs.com/?p=2806)
+
+![UTOOLS1566717296551.png](/Users/zhangleishuidihuzhu.com/Pictures/wiznote/6Ogap25ie4QbWsS.png)
+
+Spring 在实现上述功能中，将整个流程分为两个阶段：容器初始化阶段和加载bean 阶段。
+
+- **容器初始化阶段**：首先通过某种方式加载 Configuration Metadata (主要是依据 Resource、ResourceLoader 两个体系)，然后容器会对加载的 Configuration MetaData 进行解析和分析，并将分析的信息组装成 BeanDefinition，并将其保存注册到相应的 BeanDefinitionRegistry 中。至此，Spring IOC 的初始化工作完成。
+- **加载 bean 阶段**：经过容器初始化阶段后，应用程序中定义的 bean 信息已经全部加载到系统中了，当我们显示或者隐式地调用 `getBean()` 时，则会触发加载 bean 阶段。在这阶段，容器会首先检查所请求的对象是否已经初始化完成了，如果没有，则会根据注册的 bean 信息实例化请求的对象，并为其注册依赖，然后将其返回给请求方。至此第二个阶段也已经完成。
+
+第一个阶段，已经通过10多篇文章分析完成。这里开始分析第二个阶段。
