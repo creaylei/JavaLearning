@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="博客继续读">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spring/Java实战细节.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/Java实战细节.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spring/项目实战/微人事项目学习.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/项目实战/微人事项目学习.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spring/项目实战/权限设计.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/项目实战/权限设计.md" afterDir="false" />
-    </list>
+    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="博客继续读" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +19,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="$MAVEN_REPOSITORY$" />
+        <option name="mavenHome" value="/usr/local/Cellar/maven/3.6.0/libexec" />
+        <option name="userSettingsFile" value="/usr/local/Cellar/maven/3.6.0/libexec/conf/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="MavenRunner">
     <option name="jreName" value="1.8" />
@@ -283,6 +286,7 @@
       <workItem from="1571733334792" duration="430000" />
       <workItem from="1572598053765" duration="135000" />
       <workItem from="1574221862116" duration="13000" />
+      <workItem from="1590826591904" duration="256000" />
     </task>
     <task id="LOCAL-00001" summary="更新文件">
       <created>1560501417463</created>
@@ -459,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571733804602</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="博客继续读">
+      <created>1590826669355</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1590826669355</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
