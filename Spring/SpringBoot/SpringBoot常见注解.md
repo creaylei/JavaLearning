@@ -4,9 +4,9 @@
 
 ## 1.注解列表
 
-- @Springbootapplication : 包含了@ComponentScan(让springboot扫描到Configuration类并把他加入程序上下文)、@Configuration和@EnableAutoConfiguration注解。
+- @**Springbootapplication** : 包含了@ComponentScan(让springboot扫描到Configuration类并把他加入程序上下文)、@Configuration和@EnableAutoConfiguration注解。
 
-- @Configuration： **等同于spring的xml配置文件**（自己理解：本来配置spring需要一个xml文件，但是有了这个注解后，改变如下）； 使用java代码可以检查类型安全
+- @**Configuration**： **等同于spring的xml配置文件**（自己理解：本来配置spring需要一个xml文件，但是有了这个注解后，改变如下）； 使用java代码可以检查类型安全
 
   ```java
   //之前
@@ -151,3 +151,252 @@
 @PathVariable注解是将方法中的参数绑定到请求URI中的模板变量上。可以通过@RequestMapping注解来指定URI的模板变量，然后使用@PathVariable注解将方法中的参数绑定到模板变量上。特别地，@PathVariable注解允许我们使用value或name属性来给参数取一个别名。下面是使用此注解的一个示例：
 
 ![UTOOLS1566532152907.png](https://i.loli.net/2019/08/23/oCwQ5dFrZ6ayD9W.png)
+
+## 7.数据校验@Valid和@Validated
+
+### @Valid
+
+```java
+//用在实体类上
+public class Book {
+
+    private Integer id;
+    @NotBlank(message = "name 不允许为空")
+    @Length(min = 2, max = 10, message = "name 长度必须在 {min} - {max} 之间")
+    private String name;
+    @NotNull(message = "price 不允许为空")
+    @DecimalMin(value = "0.1", message = "价格不能低于 {value}")
+    private BigDecimal price;
+
+    // 省略 GET SET ...
+}
+```
+
+**使用**的时候，在Controller层的接口上使用
+
+**第一步**：首先需要在实体类的相应字段上添加用于充当校验条件的注解，如：@Min,如下代码（age属于Girl类中的属性）：
+
+```java
+@Min(value = 18,message = "未成年禁止入内")  
+private Integer age;
+```
+
+- 注解包括  @NotEmpty @NotBlank @NotNull 等
+
+**第二步** :其次在controller层的方法的要校验的参数上添加@Valid注解，并且需要传入BindingResult对象，用于获取校验失败情况下的反馈信息，如下代码：
+
+```java
+@PostMapping("/girls")  
+public Girl addGirl(@Valid Girl girl, BindingResult bindingResult) {  
+    if(bindingResult.hasErrors()){  
+        System.out.println(bindingResult.getFieldError().getDefaultMessage());  
+        return null;  
+    }  
+    return girlResposity.save(girl);  
+}
+```
+
+
+
+### @Validated
+
+该注解是对@Valid进行了一层封装
+
+> @Valid是javax.validation里的。
+>
+> @Validated是@Valid 的一次封装，是Spring提供的校验机制使用。@Valid不提供分组功能
+
+特殊用法
+
+1. 分组
+
+当一个实体类需要多种验证方式时，例：对于一个实体类的id来说，新增的时候是不需要的，对于更新时是必须的。
+
+可以通过groups对验证进行分组
+
+分组接口类（通过向groups分配不同类的class对象，达到分组目的）：
+
+```java
+//在First分组时，判断不能为空  
+@NotEmpty(groups={First.class})  
+private String id;
+
+不分配groups，默认每次都要进行验证
+```
+
+使用如下
+
+@Controller  
+public class FirstController {  
+      
+```java
+@RequestMapping("/addPeople")  
+//不需验证ID  
+public @ResponseBody String addPeople(@Validated People p,BindingResult result)  
+{  
+    System.out.println("people's ID:" + p.getId());  
+    if(result.hasErrors())  
+    {  
+        return "0";  
+    }  
+    return "1";  
+}  
+  
+@RequestMapping("/updatePeople")  
+//需要验证ID  
+public @ResponseBody String updatePeople(@Validated({First.class}) People p,BindingResult result)  
+{  
+    System.out.println("people's ID:" + p.getId());  
+    if(result.hasErrors())  
+    {  
+        return "0";  
+    }  
+    return "1";  
+}  
+}
+```
+如上
+
+- @Validated没有添加groups属性时，默认验证没有分组的验证属性，如该例子：People的name属性。
+- @Validated没有添加groups属性时，所有参数的验证类型都有分组（即本例中People的name的@NotEmpty、@Size都添加groups属性），则不验证任何参数
+
+## 8. @ControllerAdvice
+
+> 这里说@ControllerAdvice的三种使用场景，这个注解是springMVC里面带的
+
+@ControllerAdvice ，很多初学者可能都没有听说过这个注解，实际上，这是一个非常有用的注解，顾名思义，这是一个增强的 Controller。使用这个 Controller ，可以实现三个方面的功能：
+
+1. 全局异常处理
+2. 全局数据绑定
+3. 全局数据预处理
+
+灵活使用这三个功能，可以帮助我们简化很多工作，需要注意的是，这是 SpringMVC 提供的功能，在 Spring Boot 中可以直接使用，下面分别来看。
+
+### 1 全局异常处理
+
+使用 @ControllerAdvice 实现全局异常处理，只需要定义类，添加该注解即可定义方式如下：
+
+```java
+//这个就是异常处理拦截
+@ControllerAdvice
+public class MyGlobalExceptionHandler {
+  
+  //这个对具体的异常拦截并处理
+    @ExceptionHandler(Exception.class)
+    public ModelAndView customException(Exception e) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("message", e.getMessage());
+        mv.setViewName("myerror");
+        return mv;
+    }
+}
+
+```
+
+在该类中，可以定义多个方法，不同的方法处理不同的异常，专门处理空指针的方法、处理数组越界的异常等等。 也可以像上面的代码，一个方法处理所有的异常信息。
+
+### 2 全局数据绑定
+
+先看代码
+
+```java
+//类上声明这个注解，标识进行Controller切面拦截
+@ControllerAdvice
+public class MyGlobalExceptionHandler {
+		//定义一个方法， @ModelAttribute这个注解是 对传参是Model的方法，默认添加 name是 md的参数，其值为   age和gender
+    @ModelAttribute(name = "md")
+    public Map<String,Object> mydata() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("age", 99);
+        map.put("gender", "男");
+        return map;
+    }
+}
+```
+
+具体使用
+
+定义完成后，在任何一个Controller 的接口中，都可以获取到这里定义的数据
+
+```java
+@RestController
+public class HelloController {
+  
+  	//这里传参用的是model，在什么都不传的情况下，该入参就会有 md = {age:99, gender:男} 这样的属性
+    @GetMapping("/hello")
+    public String hello(Model model) {
+        Map<String, Object> map = model.asMap();
+        System.out.println(map);
+        int i = 1 / 0;
+        return "hello controller advice";
+    }
+}
+```
+
+具体看截图
+
+![K6bNxU.png](/Users/zhangleishuidihuzhu.com/Pictures/wiznote/K6bNxU.png)
+
+什么都没传的情况下，具有属性，就是这个道理
+
+### 3 全局数据预处理
+
+考虑有两个实体类，Book和Author
+
+```java
+public class Book {
+    private String name;
+    private Long price;
+    //getter/setter
+}
+public class Author {
+    private String name;
+    private Integer age;
+    //getter/setter
+}
+```
+
+此时，定义一个数据添加接口，如下
+
+```java
+@PostMapping("/book")
+public void addBook(Book book, Author author) {
+    System.out.println(book);
+    System.out.println(author);
+}
+```
+
+这个时候，添加操作就会有问题，因为两个实体类都有一个 name 属性，从前端传递时 ，无法区分。此时，通过 @ControllerAdvice 的全局数据预处理可以解决这个问题
+
+解决步骤如下:
+
+1. 给接口中的变量取别名
+
+```java
+@PostMapping("/book")
+public void addBook(@ModelAttribute("b") Book book, @ModelAttribute("a") Author author) {
+    System.out.println(book);
+    System.out.println(author);
+}
+```
+
+2.进行请求数据预处理
+在 @ControllerAdvice 标记的类中添加如下代码:
+
+```java
+@InitBinder("b")
+public void b(WebDataBinder binder) {
+    binder.setFieldDefaultPrefix("b.");
+}
+@InitBinder("a")
+public void a(WebDataBinder binder) {
+    binder.setFieldDefaultPrefix("a.");
+}
+```
+
+3. @InitBinder("b") 注解表示该方法用来处理和Book和相关的参数,在方法中,给参数添加一个 b 前缀,即请求参数要有b前缀.
+
+使用的时候，就是传参
+
+![K6qJwd.png](/Users/zhangleishuidihuzhu.com/Pictures/wiznote/K6qJwd.png)
+

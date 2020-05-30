@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="新增通过小游戏学git" />
+    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="博客继续读">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/Java实战细节.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/Java实战细节.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/SpringBoot/SpringBoot常见注解.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/项目实战/微人事项目学习.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/项目实战/微人事项目学习.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring/项目实战/权限设计.md" beforeDir="false" afterPath="$PROJECT_DIR$/Spring/项目实战/权限设计.md" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,6 +271,18 @@
       <workItem from="1566551482941" duration="951000" />
       <workItem from="1566787177935" duration="1397000" />
       <workItem from="1568633230339" duration="206000" />
+      <workItem from="1568712917980" duration="428000" />
+      <workItem from="1568775393912" duration="355000" />
+      <workItem from="1569296736266" duration="628000" />
+      <workItem from="1569468647048" duration="782000" />
+      <workItem from="1569811736973" duration="963000" />
+      <workItem from="1569825954324" duration="2406000" />
+      <workItem from="1570525664471" duration="204000" />
+      <workItem from="1571021463529" duration="1081000" />
+      <workItem from="1571397131998" duration="8000" />
+      <workItem from="1571733334792" duration="430000" />
+      <workItem from="1572598053765" duration="135000" />
+      <workItem from="1574221862116" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="更新文件">
       <created>1560501417463</created>
@@ -343,7 +361,105 @@
       <option name="project" value="LOCAL" />
       <updated>1568633313473</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="新增通过小游戏学git">
+      <created>1568713009445</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1568713009445</updated>
+    </task>
+    <task id="LOCAL-00013" summary="新增批量删除和批量更新">
+      <created>1568775592901</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1568775592901</updated>
+    </task>
+    <task id="LOCAL-00014" summary="新增源码阅读">
+      <created>1569296787124</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1569296787124</updated>
+    </task>
+    <task id="LOCAL-00015" summary="新增index字段介绍">
+      <created>1569468674131</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1569468674132</updated>
+    </task>
+    <task id="LOCAL-00016" summary="新增index">
+      <created>1569468861910</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1569468861910</updated>
+    </task>
+    <task id="LOCAL-00017" summary="新增项目实战学习">
+      <created>1569811824119</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1569811824119</updated>
+    </task>
+    <task id="LOCAL-00018" summary="mybatis  association 和 collection使用">
+      <created>1569836288409</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1569836288409</updated>
+    </task>
+    <task id="LOCAL-00019" summary="微人事项目补充">
+      <created>1570525724495</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1570525724495</updated>
+    </task>
+    <task id="LOCAL-00020" summary="mysql新增存储过程">
+      <created>1570525749242</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1570525749242</updated>
+    </task>
+    <task id="LOCAL-00021" summary="增加细节知识">
+      <created>1571021650521</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1571021650521</updated>
+    </task>
+    <task id="LOCAL-00022" summary="1014">
+      <created>1571021788637</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1571021788637</updated>
+    </task>
+    <task id="LOCAL-00023" summary="博客继续读">
+      <created>1571733509519</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1571733509519</updated>
+    </task>
+    <task id="LOCAL-00024" summary="博客继续读">
+      <created>1571733695466</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1571733695466</updated>
+    </task>
+    <task id="LOCAL-00025" summary="博客继续读">
+      <created>1571733804602</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1571733804602</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,7 +491,18 @@
     <MESSAGE value="试着添加图片" />
     <MESSAGE value="更新jodaTime" />
     <MESSAGE value="新增springIoC文档阅读" />
+    <MESSAGE value="新增批量删除和批量更新" />
+    <MESSAGE value="新增源码阅读" />
+    <MESSAGE value="新增index字段介绍" />
+    <MESSAGE value="新增index" />
+    <MESSAGE value="新增项目实战学习" />
+    <MESSAGE value="mybatis  association 和 collection使用" />
+    <MESSAGE value="微人事项目补充" />
     <MESSAGE value="新增通过小游戏学git" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增通过小游戏学git" />
+    <MESSAGE value="mysql新增存储过程" />
+    <MESSAGE value="增加细节知识" />
+    <MESSAGE value="1014" />
+    <MESSAGE value="博客继续读" />
+    <option name="LAST_COMMIT_MESSAGE" value="博客继续读" />
   </component>
 </project>
