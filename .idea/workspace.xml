@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="博客继续读">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/重启210627.md" afterDir="false" />
+    <list default="true" id="89b99641-baf4-400f-8e99-52bcda8c33e2" name="Default" comment="错线程">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,12 +52,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="11" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Spring/SpringMVC" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -292,7 +296,8 @@
       <workItem from="1572598053765" duration="135000" />
       <workItem from="1574221862116" duration="13000" />
       <workItem from="1590826591904" duration="256000" />
-      <workItem from="1624779129834" duration="163000" />
+      <workItem from="1624779129834" duration="4207000" />
+      <workItem from="1624803908686" duration="110000" />
     </task>
     <task id="LOCAL-00001" summary="更新文件">
       <created>1560501417463</created>
@@ -476,7 +481,42 @@
       <option name="project" value="LOCAL" />
       <updated>1590826669355</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="21年7月继续学习">
+      <created>1624779360829</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1624779360829</updated>
+    </task>
+    <task id="LOCAL-00028" summary="新建多线程文件夹">
+      <created>1624780198917</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1624780198917</updated>
+    </task>
+    <task id="LOCAL-00029" summary="多线程实现方式、lambda表达式">
+      <created>1624786856231</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1624786856231</updated>
+    </task>
+    <task id="LOCAL-00030" summary="多线程">
+      <created>1624800549252</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1624800549252</updated>
+    </task>
+    <task id="LOCAL-00031" summary="错线程">
+      <created>1624803191875</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1624803191875</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,6 +560,37 @@
     <MESSAGE value="增加细节知识" />
     <MESSAGE value="1014" />
     <MESSAGE value="博客继续读" />
-    <option name="LAST_COMMIT_MESSAGE" value="博客继续读" />
+    <MESSAGE value="21年7月继续学习" />
+    <MESSAGE value="新建多线程文件夹" />
+    <MESSAGE value="多线程实现方式、lambda表达式" />
+    <MESSAGE value="多线程" />
+    <MESSAGE value="错线程" />
+    <option name="LAST_COMMIT_MESSAGE" value="错线程" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="350" y="23" width="739" height="797" key="CommitChangelistDialog2" timestamp="1624804005332">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="350" y="23" width="739" height="797" key="CommitChangelistDialog2/0.23.1440.797@0.23.1440.797" timestamp="1624804005332" />
+    <state x="144" y="92" key="DiffContextDialog" timestamp="1624779315960">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="144" y="92" key="DiffContextDialog/0.23.1440.797@0.23.1440.797" timestamp="1624779315960" />
+    <state x="229" y="60" key="SettingsEditor" timestamp="1624803886498">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="229" y="60" key="SettingsEditor/0.23.1440.797@0.23.1440.797" timestamp="1624803886498" />
+    <state x="320" y="161" key="Vcs.Push.Dialog.v2" timestamp="1624803208831">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="320" y="161" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1624803208831" />
+    <state x="509" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624787042964">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="509" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.797@0.23.1440.797" timestamp="1624787042964" />
+    <state x="114" y="44" key="new project wizard" timestamp="1624779985516">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="114" y="44" key="new project wizard/0.23.1440.797@0.23.1440.797" timestamp="1624779985516" />
   </component>
 </project>
