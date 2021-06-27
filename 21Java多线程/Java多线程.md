@@ -137,4 +137,52 @@ class Like implements ILike{
 }
 ```
 
-ces 
+注意其中各种内部类的表述，并且怎么用lambda表达式替换的
+
+---
+
+### 4. 线程的生命周期
+
+![image-20210627214445532](https://tva1.sinaimg.cn/large/008i3skNly1grx5rmbqv5j31800j4qcx.jpg)
+
+
+
+#### 4.0 线程的状态
+
+```java
+		//Thread类的内部状态
+		public static enum State {
+        NEW,
+        RUNNABLE,
+        BLOCKED,
+        WAITING,
+        TIMED_WAITING,   //等待另一个线程执行完成
+        TERMINATED;
+    }
+```
+
+**新建、就绪、运行、阻塞、销毁**。  
+
+**`new` 一个的时候就新生了， 然后调用`start()`, 或者`submit` 就提交就绪，是否执行需要看CPU调度**
+
+调用 Thread.getState() 获取当前状态
+
+#### 4.1 线程休眠Sleep()
+
+`sleep` 时间到达后进入`就绪`状态，可以模拟网络延时，倒计时
+
+每个对象都有锁，`sleep` 不会释放锁
+
+#### 4.2 线程礼让`yield()`
+
+礼让是让当前的线程从`运行`进入`就绪`状态，不一定会成功，看CPU心情
+
+线程暂停，但是不阻塞
+
+#### 4.3 强制执行 `join()`
+
+简单来讲就是插队， 强制当前线程执行完，再执行其他线程
+
+
+
+> P16
