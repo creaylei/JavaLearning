@@ -1,5 +1,7 @@
 # Java并发图册
 
+[toc]
+
 > 日拱一兵著， 同名公众号「日拱一兵」
 
 并发编程3个核心问题：**分工、同步/写作、互斥**， 分工是设计，同步和互斥是实现
@@ -104,8 +106,72 @@ public class Singleton {
 
 -  happens-before 解决的是有序性问题，是原则
 - start 和 join 也是解决主线程和子线程通信的方式之一
-- 从内存语义的⻆度来说, volatile 的 写-读 与锁的 释放-获取 有相同的内存效 果;volatile 写和锁的释放有相同的内存语义; volatile 读与锁的获取有相同的 内存语义，<font style="background-color:yellow;"> (敲黑板了) volatile 解决的是可⻅性问题，synchronized 解决的是原子性问题，</font>这绝对不是一回事
+- 从内存语义的⻆度来说, volatile 的 写-读 与锁的 释放-获取 有相同的内存效 果;volatile 写和锁的释放有相同的内存语义; volatile 读与锁的获取有相同的 内存语义， **(敲黑板了) volatile 解决的是可⻅性问题，synchronized 解决的是原子性问题，**这绝对不是一回事
 
 ### 2.2 如何解决原子性问题
 
-原子性问题的源头是：`线程切换`
+原子性问题的源头是：`线程切换`， 新规矩： 同一时刻只有一个线程执行
+
+补充一下 `synchronized` 三种用法
+
+```java
+public class ThreeSync {
+	private static final Object object = new Object();
+	public synchronized void normalSyncMethod(){ //临界区
+	}
+	public static synchronized void staticSyncMethod(){ //临界区
+	}
+	public void syncBlockMethod(){ synchronized (object){
+		//临界区
+	} }
+}
+```
+
+三种 synchronized 锁的内容有一些差别:
+
+- 对于普通同步方法，锁的是当前实例对象，通常指 this 
+- 对于静态同步方法，锁的是当前类的 Class 对象，如 ThreeSync.class 
+- 对于同步方法块，锁的是 synchronized 括号内的对象
+
+**临界区：我们把需要互斥执行的代码看成为临界区，如何用锁保护有效的临界区才是关键**，这直接关系到你是否会写出并发的 bug，无论是隐式 锁/内置锁 (synchronized) 还是显示锁 (Lock) 的使用都是在找寻这种关系
+
+![image-20210702165011968](https://tva1.sinaimg.cn/large/008i3skNly1gs2pco4lsvj30r00p4q69.jpg)
+
+#### **重中之重**：锁什么和保护什么
+
+1. 我们锁的是什么？
+2. 我们保护的又是什么？
+
+需要**勾画草图时，明确找到这个关系**
+
+1. 编写串行程序时，是不建议 try...catch 整个方法的，这样如果出现问是很难定 位的，道理一样，我们要用锁精确的锁住我们要保护的资源就够了，其他无意 义的资源是不要锁的
+
+2. 锁保护的东⻄越多，临界区就越大，一个线程从走入临界区到走出临界区的时 间就越⻓，这就让其他线程等待的时间越久，这样并发的效率就有所下降，其 实这是涉及到锁粒度的问题，后续也都会做相关说明
+
+#### 小节
+
+1. 解决原子性问题，就是要互斥，就是要保证中间状态对外不可⻅
+
+2. 锁是解决原子性问题的关键，明确知道我们锁的是什么，要保护的资源是什么，更重要的要知道你的锁能否保护这个受保护的资源(图中的箭头指向)
+3. **有效的临界区是一个入口和一个出口，多个临界区保护一个资源，也就是一个 资源有多个并行的入口和多个出口，这就没有起到互斥的保护作用，临界区形 同虚设**
+
+4. 锁自己家⻔能保护资源就没必要锁整个小区，如果锁了整个小区，这严重影响 其他业主的活动(锁粒度的问题)
+
+## 3. `volatile`详解
+
+复习下： happens-before 的原则之一: volatile变量规则
+
+> 对一个 volatile 域的写, happens-before 于任意后续对这个 volatile 域的读
+
+**这个表格是否还记得？**
+
+| **能否重排序** | 第二个操作 | 第二个操作  | 第二个操作  |
+| -------------- | ---------- | ----------- | ----------- |
+| **第一个操作** | 普通读/写  | volatile 读 | volatile 写 |
+| 普通读/写      | -          | -           | NO          |
+| volatile 读    | NO         | NO          | NO          |
+| volatile 写    | -          | NO          | NO          |
+
+这是 JMM 针对编译器定制的 volatile 重排序的规则，那 JMM 是怎样禁止 重排序的呢?答案是**内存屏障**
+
+### 内存屏障(**Memory Barriers / Fences**)
