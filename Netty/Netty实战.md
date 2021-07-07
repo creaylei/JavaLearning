@@ -311,3 +311,15 @@ class ClientHandler extends ChannelInboundHandlerAdapter {
 - 为􏰟服务连接创􏰕建一个InetSocketAddress实例􏱇; 
 - 当连接被􏰕􏰵时，一个EchoClientHandler 实􏱇会被安装到(该Channel 的) ChannelPipeline 中;
 - 􏰋一切都设置完成后，􏱱用Bootstrap.connect() 方􏳛连接到远􏰗节点;
+
+---
+
+### 第三章：Netty的组件和设计
+
+主要介绍了核心组件，以及各组件间的关系
+
+### 3.1 `Channel`,`EventLoop`和`ChannelFuture`
+
+- Channel—— Socket
+- EventLoop—— 控制流、多线程处理、并发
+- ChannelFuture—— 异步通知
