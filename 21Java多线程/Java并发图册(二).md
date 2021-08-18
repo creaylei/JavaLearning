@@ -176,6 +176,37 @@ public static ExecutorService newFixedThreadPool(int nThreads) {
 
 总之，`Executors`太过于理想化，还是自己老老实实创建
 
+```
+public static ExecutorService newFixedThreadPool(int nThreads) {
+        return new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>());
+    }
+    
+    
+public static ExecutorService newSingleThreadExecutor() {
+        return new FinalizableDelegatedExecutorService
+            (new ThreadPoolExecutor(1, 1,
+                                    0L, TimeUnit.MILLISECONDS,
+                                    new LinkedBlockingQueue<Runnable>()));
+    }
+    
+    
+ public static ExecutorService newCachedThreadPool() {
+        return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                                      60L, TimeUnit.SECONDS,
+                                      new SynchronousQueue<Runnable>());
+    }
+    
+    
+public static ScheduledExecutorService newScheduledThreadPool(
+            int corePoolSize, ThreadFactory threadFactory) {
+        return new ScheduledThreadPoolExecutor(corePoolSize, threadFactory);
+    }
+```
+
+这四种最大线程创建数都可能达到 Integer.MaxValue 。 导致OOM
+
 ### 灵魂拷问
 
 1. 线程池的缺点是什么？
@@ -262,7 +293,7 @@ MESA监视器模型，每一个条件变量都对应一个条件等待队列。
 
 
 
-## 10. 贯穿并发编程的终端机制
+## 10. 贯穿并发编程的中断机制
 
 ![image-20210817194815095](https://tva1.sinaimg.cn/large/008i3skNly1gtk102jyvdj60wm0lawgk02.jpg)
 
