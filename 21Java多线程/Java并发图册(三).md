@@ -1,4 +1,4 @@
-# JAVA并发图册(3-3)
+# JAVA并发图册(3-4)
 
 [toc]
 
@@ -1076,6 +1076,22 @@ public class CyclicBarrierExample {
 
 
 
+### 小总结：
 
+`semaphore` ： 起限流作用，实际用处不大， 了解下 google的guava
 
-## 看到P276：Future_Task
+`CountDownLatch` : 当计数器减到0时候一起执行， 但是重置比较麻烦，不常用
+
+`CyclicBarrier` : 栅栏， 用的比较多。   加强版`CountDownLatch`, 可以重置初始值
+
+本文讲解了 CountDownLatch 和 CyclicBarrier 的经典使用场景以及实现原理，以及在使用过程中可能会遇到的问题，比如将大的 list 拆分作业就可以用到前者，读取多个 Excel 的sheet 页，最后进行结果汇总就可以用到后者 （文中完整示例代码已上传）
+
+最后，再形象化的比喻一下
+
+CountDownLatch 主要用来解决一个线程等待多个线程的场景，可以类比旅游团团长要等待所有游客到齐才能去下一个景点
+而 CyclicBarrier 是一组线程之间的相互等待，可以类比几个驴友之间的不离不弃，共同到达某个地方，再继续出发，这样反复
+
+灵魂追问
+
+1. 怎样拿到 CyclicBarrier 的汇总结果呢？
+2. 线程池中的 Future 特性你有使用过吗？
