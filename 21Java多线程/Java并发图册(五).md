@@ -364,6 +364,16 @@ public static ExecutorService newCachedThreadPool() {
 
 不知道你是否听过 “**工作窃取**”模式，看似不太厚道的一种方法，实则是高效利用线程的好办法。下一篇文章，我们就来看看 ForkJoinPool 是如何应用 “**工作窃取**”模式的
 
-## 总结
+### 总结
 
 到这关于 Java 队列（其实主要介绍了阻塞队列）就快速的区分完了，将看似杂乱的方法做了分类整理，方便快速理解其用途，同时也说明了这些队列的实际用途。相信你带着更高的视角来阅读源码会更加轻松，最后也希望大家认真看两个队列的源码实现，在遇到队列的问题，脑海中的画面分分钟就可以搞定了
+
+## 17 其他
+
+Tomcat线程池： 默认先将所有线程用完，再进队列
+
+JDK线程池：先核心、再队列、再最大线程
+
+[Why技术：如何设置线程池参数？美团给出了一个让面试官虎躯一震的回答。](https://mp.weixin.qq.com/s?__biz=Mzg3NjU3NTkwMQ==&mid=2247505103&idx=1&sn=a041dbec689cec4f1bbc99220baa7219&source=41#wechat_redirect)
+
+![image-20210827171235214](https://tva1.sinaimg.cn/large/008i3skNly1gtvgp747tbj61qu0rojyp02.jpg)
